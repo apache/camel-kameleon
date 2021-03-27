@@ -77,7 +77,7 @@ const Standalone = Vue.component('standalone', {
   data: function () {
       return {
           camelVersion: '',
-          camelVersions: []
+          camelVersionN: ''
       }
     },
   components: {
@@ -96,36 +96,22 @@ const Standalone = Vue.component('standalone', {
     selectCamelVersion: async function (event) {
         var result = [];
         const vRequest = await axios.get('https://api.github.com/repos/apache/camel/tags');
-        this.camelVersions = vRequest.data;
-        this.camelVersion = (this.camelVersion === '' ? this.camelVersions[0].name : this.camelVersion);
+        var camelVersions = vRequest.data;
+        this.camelVersion = (this.camelVersion === '' ? camelVersions[0].name : this.camelVersion);
+        this.camelVersionN = (this.camelVersion.startsWith('camel-') ? this.camelVersion.replace('camel-', '') : this.camelVersionN);
         const cRequest = await axios.get('https://api.github.com/repos/apache/camel/contents/components?ref=' + this.camelVersion);
         // get Component names
-        result = result.concat(await this.getNames(
-            'https://raw.githubusercontent.com/apache/camel/'+this.camelVersion+'/docs/components/modules/ROOT/nav.adoc',
-            cRequest.data,
-            'component'
-        ));
+        result = result.concat(await this.getNames(this.camelVersion, 'ROOT', cRequest.data, 'component'));
         // get Dataformat names
-        result = result.concat(await this.getNames(
-            'https://raw.githubusercontent.com/apache/camel/'+this.camelVersion+'/docs/components/modules/dataformats/nav.adoc',
-            cRequest.data,
-            'dataformat'
-        ));
+        result = result.concat(await this.getNames(this.camelVersion, 'dataformats', cRequest.data, 'dataformat'));
         // get Dataformat names
-        result = result.concat(await this.getNames(
-            'https://raw.githubusercontent.com/apache/camel/'+this.camelVersion+'/docs/components/modules/languages/nav.adoc',
-            cRequest.data,
-            'language'
-        ));
+        result = result.concat(await this.getNames(this.camelVersion, 'languages', cRequest.data, 'language'));
         // get Other names
-        result = result.concat(await this.getNames(
-            'https://raw.githubusercontent.com/apache/camel/'+this.camelVersion+'/docs/components/modules/others/nav.adoc',
-            cRequest.data,
-            'other'
-        ));
+        result = result.concat(await this.getNames(this.camelVersion, 'others', cRequest.data, 'other'));
         getEventHub().$emit('components', result);
     },
-    getNames: async function(url, compList, type){
+    getNames: async function(version, folder, compList, type){
+        var url = 'https://raw.githubusercontent.com/apache/camel/'+version+'/docs/components/modules/'+folder+'/nav.adoc';
         var result = [];
         var regexp= /(?<=\[).*?(?=\])/g;
         var nRequest = await axios.get(url);

@@ -4,23 +4,13 @@ const StandaloneTemplate = `
         <div class="pf-l-split pf-m-gutter">
             <div class="pf-l-split__item">
                 <div class="pf-c-content">
-                    <h1>Camel Standalone</h1>
+                    <h1 v-model="camelVersionN" >Camel Standalone ({{camelVersionN}})</h1>
                     <p>Maven project for Camel routes running Camel standalone (camel-main)</p>
                 </div>
             </div>
             <div class="pf-l-split__item pf-m-fill"></div>
             <div class="pf-l-split__item">
-                <div class="pf-c-form__group padding">
-                    <label class="pf-c-form__label" for="topic">
-                        <span class="pf-c-form__label-text">Camel version</span>
-                        <span class="pf-c-form__label-required" aria-hidden="true">&#42;</span>
-                    </label>
-                    <select @change="onChange" v-model="camelVersion" class="pf-c-form-control" id="version" name="version" aria-label="select version" required>
-                        <option v-for="v in camelVersions" v-bind:value="v.name">
-                            {{ v.name }}
-                        </option>
-                    </select>
-                </div>
+                    <button class="pf-c-button pf-m-primary" type="button">Generate</button>
             </div>
         </div>
     </section>
