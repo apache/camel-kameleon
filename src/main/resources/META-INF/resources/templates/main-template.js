@@ -20,7 +20,7 @@ const MainTemplate = `
             <nav class="pf-c-nav pf-m-dark" id="page-default-nav-example-primary-nav" aria-label="Global">
                 <ul class="pf-c-nav__list">
                     <li class="pf-c-nav__item">
-                        <router-link to="/core" v-bind:class="[$route.path === '/core' ? 'pf-m-current' : '', 'pf-c-nav__link']">Core</router-link>
+                        <router-link to="/standalone" v-bind:class="[$route.path === '/standalone' ? 'pf-m-current' : '', 'pf-c-nav__link']">Standalone</router-link>
                     </li>
                     <li class="pf-c-nav__item">
                         <router-link to="/spring" v-bind:class="[$route.path === '/spring' ? 'pf-m-current' : '', 'pf-c-nav__link']">Spring Boot</router-link>

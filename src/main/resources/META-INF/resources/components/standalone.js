@@ -1,4 +1,4 @@
-import { CoreTemplate } from "../templates/core-template.js";
+import { StandaloneTemplate } from "../templates/standalone-template.js";
 import { ProjectTemplate } from "../templates/project-template.js";
 import { ComponentsTemplate } from "../templates/components-template.js";
 import { SelectedTemplate } from "../templates/selected-template.js";
@@ -73,7 +73,7 @@ const Selected = Vue.component('selected', {
   template: SelectedTemplate
 });
 
-const Core = Vue.component('core', {
+const Standalone = Vue.component('standalone', {
   data: function () {
       return {
           camelVersion: '',
@@ -141,7 +141,7 @@ const Core = Vue.component('core', {
         return result;
     },
   },
-  template: CoreTemplate
+  template: StandaloneTemplate
 });
 
-export { Core }
+export { Standalone }

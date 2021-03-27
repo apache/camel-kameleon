@@ -1,11 +1,11 @@
-const CoreTemplate = `
+const StandaloneTemplate = `
 <div>
     <section class="pf-c-page__main-section pf-m-light">
         <div class="pf-l-split pf-m-gutter">
             <div class="pf-l-split__item">
                 <div class="pf-c-content">
-                    <h1>Camel Core</h1>
-                    <p>Maven project generator for Camel Core</p>
+                    <h1>Camel Standalone</h1>
+                    <p>Maven project for Camel routes running Camel standalone (camel-main)</p>
                 </div>
             </div>
             <div class="pf-l-split__item pf-m-fill"></div>
@@ -27,7 +27,7 @@ const CoreTemplate = `
     <section class="pf-c-page__main-section">
         <project></project>
     </section>
-    <section class="pf-c-page__main-section">
+    <section class="pf-c-page__main-section no-padding-top">
         <div class="pf-l-grid pf-m-all-6-col-on-sm pf-m-all-4-col-on-md pf-m-all-2-col-on-lg pf-m-all-1-col-on-xl">
           <div class="pf-l-grid__item pf-m-8-col-on-sm pf-m-4-col-on-lg pf-m-6-col-on-xl">
                 <components></components>
@@ -41,4 +41,4 @@ const CoreTemplate = `
 </div>
 `
 
-export { CoreTemplate }
+export { StandaloneTemplate }
