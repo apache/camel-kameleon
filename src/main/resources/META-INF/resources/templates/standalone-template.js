@@ -4,8 +4,8 @@ const StandaloneTemplate = `
         <div class="pf-l-split pf-m-gutter">
             <div class="pf-l-split__item">
                 <div class="pf-c-content">
-                    <h1 v-model="camelVersionN" >Camel Standalone ({{camelVersionN}})</h1>
-                    <p>Maven project for Camel routes running Camel standalone (camel-main)</p>
+                    <h1 v-model="title" >{{title}}</h1>
+                    <p v-model="subtitle" >{{subtitle}}</p>
                 </div>
             </div>
             <div class="pf-l-split__item pf-m-fill"></div>

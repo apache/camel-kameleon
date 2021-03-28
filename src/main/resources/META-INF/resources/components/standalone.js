@@ -6,8 +6,11 @@ import { Selected } from "./selected.js"
 import getEventHub from './event-hub.js'
 
 const Standalone = Vue.component('standalone', {
+  props: ['type'],
   data: function () {
       return {
+          title: '',
+          subtitle: '',
           camelVersion: '',
           camelVersionN: ''
       }
@@ -17,15 +20,33 @@ const Standalone = Vue.component('standalone', {
     'components': Components,
     'selected': Selected
   },
-  mounted: function () {
-      this.selectCamelVersion();
+  watch: {
+    '$route.path': function(val, oldVal){
+      this.setTitle();
+    }
+  },
+  mounted: async function () {
+      this.setTitle();
+      await this.selectCamelVersion();
+      this.setTitle();
   },
   methods: {
+    setTitle: function(){
+        if (this.type === 'main'){
+            this.title = 'Camel Standalone (' + this.camelVersionN + ')'
+            this.subtitle = 'Maven project for Camel routes running Camel standalone (camel-main)'
+        } else if (this.type === 'spring') {
+            this.title = 'Camel Spring Boot (' + this.camelVersionN + ')'
+            this.subtitle = 'Maven project for Camel routes running Camel Spring Boot (camel-spring-boot)'
+        }
+    },
     generate : async function(event){
         const project = this.$children.find(child => { return child.$options.name === "project"; });
+        const sel = this.$children.find(child => { return child.$options.name === "selected"; });
+        const selected = sel.selected.map((item) => item['artifact']).join(",");
         axios({
             method: 'get',
-            url: '/generator/main/'+'3.8.0'+'/'+project.group+'/'+project.artifact+'/'+project.version+'/camel-timer,camel-log',
+            url: '/generator/main/'+'3.8.0'+'/'+project.group+'/'+project.artifact+'/'+project.version+'/' + selected,
             responseType: 'arraybuffer'
         }).then(response => {
             this.forceFileDownload(response)

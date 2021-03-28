@@ -4,6 +4,10 @@ import io.vertx.core.Vertx;
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
 import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;
 import org.apache.commons.compress.utils.IOUtils;
+import org.apache.maven.model.Dependency;
+import org.apache.maven.model.Model;
+import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
+import org.apache.maven.model.io.xpp3.MavenXpp3Writer;
 import org.apache.maven.shared.invoker.*;
 import org.eclipse.microprofile.config.ConfigProvider;
 
@@ -11,9 +15,8 @@ import javax.enterprise.context.ApplicationScoped;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Collections;
-import java.util.Properties;
-import java.util.UUID;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class GeneratorService {
@@ -25,16 +28,34 @@ public class GeneratorService {
         File temp = new File(folder);
         String folderName = temp.getAbsolutePath() + "/" + artifactId;
         String zipFileName = temp.getAbsolutePath() + "/" + artifactId + ".zip";
-        generateArchetype(temp, type, archetypeVersion, groupId, artifactId, version, components);
-//        if (Files.exists(Paths.get(folderName))) {
+        generateArchetype(temp, type, archetypeVersion, groupId, artifactId, version);
+        if (Files.exists(Paths.get(folderName))) {
+            addComponents(folderName, components);
             packageProject(folderName, zipFileName);
-//        }
+        }
         return zipFileName;
     }
 
+    void addComponents(String folderName, String components) throws Exception {
+        System.out.println(components);
+        File pom = new File(folderName, "pom.xml");
+        MavenXpp3Reader reader = new MavenXpp3Reader();
+        Model model = reader.read(new FileReader(pom));
+        List<Dependency> dependencies = model.getDependencies();
+        List<Dependency> additional = Arrays.stream(components.split(",")).map(s -> {
+            Dependency dep = new Dependency();
+            dep.setArtifactId(s);
+            dep.setGroupId("org.apache.camel");
+            return dep;
+        }).collect(Collectors.toList());
+        dependencies.addAll(additional);
+        model.setDependencies(dependencies);
+        MavenXpp3Writer writer = new MavenXpp3Writer();
+        writer.write(new FileWriter(pom), model);
+    }
+
     InvocationResult generateArchetype(File folder, String type, String archetypeVersion,
-                                       String groupId, String artifactId, String version,
-                                       String components) throws MavenInvocationException {
+                                       String groupId, String artifactId, String version) throws MavenInvocationException {
         Properties properties = new Properties();
         properties.setProperty("groupId", groupId);
         properties.setProperty("package", groupId + "." + artifactId);
@@ -43,7 +64,6 @@ public class GeneratorService {
         properties.setProperty("archetypeVersion", archetypeVersion);
         properties.setProperty("archetypeGroupId", "org.apache.camel.archetypes");
         properties.setProperty("archetypeArtifactId", ConfigProvider.getConfig().getValue("camel.archetype." + type, String.class));
-
 
         InvocationRequest request = new DefaultInvocationRequest();
         request.setGoals(Collections.singletonList("archetype:generate"));

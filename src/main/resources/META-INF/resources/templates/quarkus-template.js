@@ -5,6 +5,7 @@ const QuarkusTemplate = `
             <div class="pf-l-split__item">
                 <div class="pf-c-content">
                     <h1>Camel Quarkus</h1>
+                    <p>Work in progress...</p>
                 </div>
             </div>
         </div>
