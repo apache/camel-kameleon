@@ -14,12 +14,15 @@ import org.eclipse.microprofile.config.ConfigProvider;
 import javax.enterprise.context.ApplicationScoped;
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class GeneratorService {
+
+    static final String MAVEN_REPO = "/deployments/maven";
 
     String generate(String type, String archetypeVersion,
                     String groupId, String artifactId, String version, String components) throws Exception {
@@ -56,7 +59,8 @@ public class GeneratorService {
     }
 
     InvocationResult generateArchetype(File folder, String type, String archetypeVersion,
-                                       String groupId, String artifactId, String version) throws MavenInvocationException {
+                                       String groupId, String artifactId, String version)
+            throws MavenInvocationException, IOException {
         Properties properties = new Properties();
         properties.setProperty("groupId", groupId);
         properties.setProperty("package", groupId + "." + artifactId);
@@ -71,7 +75,12 @@ public class GeneratorService {
         request.setBatchMode(true);
         request.setProperties(properties);
         request.setBaseDirectory(folder);
+
+        Path localRepo = Files.exists(Paths.get(MAVEN_REPO)) ? Paths.get(MAVEN_REPO) : Files.createDirectory(Paths.get(MAVEN_REPO));
+
         Invoker invoker = new DefaultInvoker();
+        invoker.setMavenHome(new File(System.getenv("MAVEN_HOME")));
+        invoker.setLocalRepositoryDirectory(localRepo.toFile());
         return invoker.execute(request);
     }
 
