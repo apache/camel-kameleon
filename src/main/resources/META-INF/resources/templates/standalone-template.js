@@ -10,7 +10,12 @@ const StandaloneTemplate = `
             </div>
             <div class="pf-l-split__item pf-m-fill"></div>
             <div class="pf-l-split__item">
-                    <button @click="generate()" class="pf-c-button pf-m-primary" type="button">Generate</button>
+                    <button v-show="showButton" @click="generate()" class="pf-c-button pf-m-primary" type="button">Generate</button>
+                    <span v-show="showButton === false" class="pf-c-spinner" role="progressbar" aria-valuetext="Loading...">
+                      <span class="pf-c-spinner__clipper"></span>
+                      <span class="pf-c-spinner__lead-ball"></span>
+                      <span class="pf-c-spinner__tail-ball"></span>
+                    </span>
             </div>
         </div>
     </section>

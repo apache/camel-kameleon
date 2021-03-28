@@ -29,15 +29,16 @@ public class GeneratorService {
         String folderName = temp.getAbsolutePath() + "/" + artifactId;
         String zipFileName = temp.getAbsolutePath() + "/" + artifactId + ".zip";
         generateArchetype(temp, type, archetypeVersion, groupId, artifactId, version);
-        if (Files.exists(Paths.get(folderName))) {
+        if (Files.exists(Paths.get(folderName)) && !components.isBlank() && !components.isEmpty()) {
             addComponents(folderName, components);
+            packageProject(folderName, zipFileName);
+        } else if (Files.exists(Paths.get(folderName))) {
             packageProject(folderName, zipFileName);
         }
         return zipFileName;
     }
 
     void addComponents(String folderName, String components) throws Exception {
-        System.out.println(components);
         File pom = new File(folderName, "pom.xml");
         MavenXpp3Reader reader = new MavenXpp3Reader();
         Model model = reader.read(new FileReader(pom));

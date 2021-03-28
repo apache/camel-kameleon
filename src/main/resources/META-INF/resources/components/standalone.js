@@ -12,7 +12,8 @@ const Standalone = Vue.component('standalone', {
           title: '',
           subtitle: '',
           camelVersion: '',
-          camelVersionN: ''
+          camelVersionN: '',
+          showButton: true
       }
     },
   components: {
@@ -41,6 +42,7 @@ const Standalone = Vue.component('standalone', {
         }
     },
     generate : async function(event){
+        this.showButton = false;
         const project = this.$children.find(child => { return child.$options.name === "project"; });
         const sel = this.$children.find(child => { return child.$options.name === "selected"; });
         const selected = sel.selected.map((item) => item['artifact']).join(",");
@@ -49,8 +51,12 @@ const Standalone = Vue.component('standalone', {
             url: '/generator/main/'+'3.8.0'+'/'+project.group+'/'+project.artifact+'/'+project.version+'/' + selected,
             responseType: 'arraybuffer'
         }).then(response => {
-            this.forceFileDownload(response)
-        }).catch(() => console.log('error occured'));
+            this.forceFileDownload(response);
+            this.showButton = true;
+        }).catch(() => {
+            this.showButton = true;
+            console.log('error occured');
+        });
     },
     forceFileDownload(response){
           const url = window.URL.createObjectURL(new Blob([response.data]))

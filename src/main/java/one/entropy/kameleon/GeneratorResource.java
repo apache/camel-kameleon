@@ -17,6 +17,19 @@ public class GeneratorResource {
 
     @GET
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    @Path("{type}/{archetypeVersion}/{groupId}/{artifactId}/{version}")
+    public Response generate(
+            @PathParam("type") String type,
+            @PathParam("archetypeVersion") String archetypeVersion,
+            @PathParam("groupId") String groupId,
+            @PathParam("artifactId") String artifactId,
+            @PathParam("version") String version
+    ) throws Exception {
+        return generate(type, archetypeVersion, groupId, artifactId, version, "");
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
     @Path("{type}/{archetypeVersion}/{groupId}/{artifactId}/{version}/{components}")
     public Response generate(
             @PathParam("type") String type,
