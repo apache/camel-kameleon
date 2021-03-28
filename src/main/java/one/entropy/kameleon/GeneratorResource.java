@@ -1,6 +1,4 @@
-package one.entropy;
-
-import io.smallrye.mutiny.Uni;
+package one.entropy.kameleon;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -19,19 +17,23 @@ public class GeneratorResource {
 
     @GET
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
-    @Path("{type}/{version}/{groupId}/{artifactId}/{components}")
+    @Path("{type}/{archetypeVersion}/{groupId}/{artifactId}/{version}/{components}")
     public Response generate(
             @PathParam("type") String type,
-            @PathParam("version") String version,
+            @PathParam("archetypeVersion") String archetypeVersion,
             @PathParam("groupId") String groupId,
             @PathParam("artifactId") String artifactId,
+            @PathParam("version") String version,
             @PathParam("components") String components
     ) throws Exception {
-        String fileName = generatorService.generate(type, version, groupId, artifactId, components);
+        String fileName = generatorService.generate(type, archetypeVersion, groupId, artifactId, version, components);
         File nf = new File(fileName);
-        Response.ResponseBuilder response = Response.ok((Object) nf)
-                .header("Content-Disposition", "attachment;filename=" + nf.getName());
-        return response.build();
+        if (nf.exists()){
+            return  Response.ok((Object) nf)
+                    .header("Content-Disposition", "attachment;filename=" + nf.getName())
+                    .header("Filename", nf.getName()).build();
+        }
+        return Response.serverError().build();
     }
 }
 

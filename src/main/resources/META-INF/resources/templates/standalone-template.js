@@ -10,7 +10,7 @@ const StandaloneTemplate = `
             </div>
             <div class="pf-l-split__item pf-m-fill"></div>
             <div class="pf-l-split__item">
-                    <button class="pf-c-button pf-m-primary" type="button">Generate</button>
+                    <button @click="generate()" class="pf-c-button pf-m-primary" type="button">Generate</button>
             </div>
         </div>
     </section>

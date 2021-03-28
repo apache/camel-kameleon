@@ -1,4 +1,4 @@
-package one.entropy;
+package one.entropy.kameleon;
 
 import io.vertx.core.Vertx;
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
@@ -10,6 +10,7 @@ import org.eclipse.microprofile.config.ConfigProvider;
 import javax.enterprise.context.ApplicationScoped;
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.Properties;
 import java.util.UUID;
@@ -17,26 +18,32 @@ import java.util.UUID;
 @ApplicationScoped
 public class GeneratorService {
 
-    String generate(String type, String version, String groupId, String artifactId, String components) throws Exception {
+    String generate(String type, String archetypeVersion,
+                    String groupId, String artifactId, String version, String components) throws Exception {
         String uuid = UUID.randomUUID().toString();
         String folder = Vertx.vertx().fileSystem().createTempDirectoryBlocking(uuid);
         File temp = new File(folder);
         String folderName = temp.getAbsolutePath() + "/" + artifactId;
         String zipFileName = temp.getAbsolutePath() + "/" + artifactId + ".zip";
-        generateArchetype(temp, type, version, groupId, artifactId, components);
-        packageProject(folderName, zipFileName);
-        Vertx.vertx().fileSystem().deleteBlocking(folder);
+        generateArchetype(temp, type, archetypeVersion, groupId, artifactId, version, components);
+//        if (Files.exists(Paths.get(folderName))) {
+            packageProject(folderName, zipFileName);
+//        }
         return zipFileName;
     }
 
-    InvocationResult generateArchetype(File folder, String type, String version, String groupId, String artifactId, String components) throws MavenInvocationException {
+    InvocationResult generateArchetype(File folder, String type, String archetypeVersion,
+                                       String groupId, String artifactId, String version,
+                                       String components) throws MavenInvocationException {
         Properties properties = new Properties();
         properties.setProperty("groupId", groupId);
         properties.setProperty("package", groupId + "." + artifactId);
         properties.setProperty("artifactId", artifactId);
-        properties.setProperty("archetypeVersion", version);
+        properties.setProperty("version", version);
+        properties.setProperty("archetypeVersion", archetypeVersion);
         properties.setProperty("archetypeGroupId", "org.apache.camel.archetypes");
         properties.setProperty("archetypeArtifactId", ConfigProvider.getConfig().getValue("camel.archetype." + type, String.class));
+
 
         InvocationRequest request = new DefaultInvocationRequest();
         request.setGoals(Collections.singletonList("archetype:generate"));

@@ -4,18 +4,16 @@ import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.is;
 
 @QuarkusTest
 public class GeneratorResourceTest {
 
     @Test
-    public void testHelloEndpoint() {
+    public void generateEndpoint() {
         given()
-          .when().get("/hello-resteasy")
+          .when().get("/generator/main/3.8.0/org.acme/demo/camel-timer,camel-log")
           .then()
-             .statusCode(200)
-             .body(is("Hello RESTEasy"));
+             .statusCode(200);
     }
 
 }
