@@ -21,5 +21,6 @@ jobs:
         run: |
           ./mvnw clean package \
           -Dquarkus.container-image.build=true \
+          -Dquarkus.container-image.push=true \
           -Dquarkus.container-image.username=${{ secrets.DOCKERHUB_USERNAME }} \
           -Dquarkus.container-image.password=${{ secrets.DOCKERHUB_TOKEN }}
