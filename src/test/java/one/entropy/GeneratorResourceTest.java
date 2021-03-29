@@ -10,10 +10,7 @@ public class GeneratorResourceTest {
 
     @Test
     public void generateEndpoint() {
-        given()
-          .when().get("/generator/main/3.8.0/org.acme/demo/camel-timer,camel-log")
-          .then()
-             .statusCode(200);
+        // TODO:
     }
 
 }
