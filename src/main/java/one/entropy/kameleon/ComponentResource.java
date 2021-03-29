@@ -10,18 +10,18 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-@Path("/version")
-public class VersionResource {
+@Path("/component")
+public class ComponentResource {
 
     @Inject
-    VersionService versionService;
+    ComponentService componentService;
 
     @GET
-    @Path("/{type}")
+    @Path("/{type}/{version}")
     @Produces(MediaType.APPLICATION_JSON)
-    @CacheResult(cacheName = "versions")
-    public JsonArray versions(@PathParam("type") String type) throws Exception {
-        return versionService.getVersions(type);
+    @CacheResult(cacheName = "components")
+    public JsonArray components(@PathParam("type") String type, @PathParam("version") String version) throws Exception {
+        return componentService.components(type, version);
     }
 
 }

@@ -1,18 +1,18 @@
 import Vue from '/js/vue.esm.browser.min.js'
-import { StandaloneTemplate } from "../templates/standalone-template.js"
+import { ClassicTemplate } from "../templates/classic-template.js"
 import { Project } from "./project.js"
 import { Components } from "./components.js"
 import { Selected } from "./selected.js"
 import getEventHub from './event-hub.js'
 
-const Standalone = Vue.component('standalone', {
+const Classic = Vue.component('classic', {
   props: ['type'],
   data: function () {
       return {
           title: '',
           subtitle: '',
+          camelVersions: [],
           camelVersion: '',
-          camelVersionN: '',
           showButton: true
       }
     },
@@ -22,33 +22,41 @@ const Standalone = Vue.component('standalone', {
     'selected': Selected
   },
   watch: {
-    '$route.path': function(val, oldVal){
-      this.setTitle();
+    '$route.path': async function(val, oldVal){
+        this.setTitle();
+        getEventHub().$emit('clearSelection', '');
+        await this.selectCamelVersion();
+        this.setTitle();
+        await this.selectComponents();
     }
   },
   mounted: async function () {
       this.setTitle();
       await this.selectCamelVersion();
       this.setTitle();
+      await this.selectComponents();
   },
   methods: {
     setTitle: function(){
         if (this.type === 'main'){
-            this.title = 'Camel Standalone (' + this.camelVersionN + ')'
+            this.title = 'Camel Standalone'
             this.subtitle = 'Maven project for Camel routes running Camel standalone (camel-main)'
         } else if (this.type === 'spring') {
-            this.title = 'Camel Spring Boot (' + this.camelVersionN + ')'
+            this.title = 'Camel Spring Boot'
             this.subtitle = 'Maven project for Camel routes running Camel Spring Boot (camel-spring-boot)'
+        } else if (this.type === 'quarkus') {
+            this.title = 'Camel Quarkus'
+            this.subtitle = 'Maven project for Camel routes running Camel Quarkus (camel-quarkus)'
         }
     },
     generate : async function(event){
         this.showButton = false;
         const project = this.$children.find(child => { return child.$options.name === "project"; });
         const sel = this.$children.find(child => { return child.$options.name === "selected"; });
-        const selected = sel.selected.map((item) => item['artifact']).join(",");
+        const selected = sel.selected.map((item) => item['component']).join(",");
         axios({
             method: 'get',
-            url: '/generator/main/'+'3.8.0'+'/'+project.group+'/'+project.artifact+'/'+project.version+'/' + selected,
+            url: '/generator/'+this.type+'/'+this.camelVersion+'/'+project.group+'/'+project.artifact+'/'+project.version+'/' + selected,
             responseType: 'arraybuffer'
         }).then(response => {
             this.forceFileDownload(response);
@@ -67,24 +75,18 @@ const Standalone = Vue.component('standalone', {
           link.click()
     },
     onChange : async function(event){
-        console.log(this.camelVersion);
-        this.selectCamelVersion();
+        getEventHub().$emit('components', []);
+        this.selectComponents();
     },
     selectCamelVersion: async function (event) {
         var result = [];
-        const vRequest = await axios.get('/version/main');
-        this.camelVersionN = vRequest.data;
-        this.camelVersion = 'camel-' + this.camelVersionN;
-        const cRequest = await axios.get('https://api.github.com/repos/apache/camel/contents/components?ref=' + this.camelVersion);
-        // get Component names
-        result = result.concat(await this.getNames(this.camelVersion, 'ROOT', cRequest.data, 'component'));
-        // get Dataformat names
-        result = result.concat(await this.getNames(this.camelVersion, 'dataformats', cRequest.data, 'dataformat'));
-        // get Dataformat names
-        result = result.concat(await this.getNames(this.camelVersion, 'languages', cRequest.data, 'language'));
-        // get Other names
-        result = result.concat(await this.getNames(this.camelVersion, 'others', cRequest.data, 'other'));
-        getEventHub().$emit('components', result);
+        const vRequest = await axios.get('/version/' + this.type);
+        this.camelVersions = vRequest.data;
+        this.camelVersion = this.camelVersions[0];
+    },
+    selectComponents: async function (event) {
+        var result = await axios.get('/component/' + this.type + '/' + this.camelVersion);
+        getEventHub().$emit('components', result.data);
     },
     getNames: async function(version, folder, compList, type){
         var url = 'https://raw.githubusercontent.com/apache/camel/'+version+'/docs/components/modules/'+folder+'/nav.adoc';
@@ -103,7 +105,7 @@ const Standalone = Vue.component('standalone', {
         return result;
     },
   },
-  template: StandaloneTemplate
+  template: ClassicTemplate
 });
 
-export { Standalone }
+export { Classic }

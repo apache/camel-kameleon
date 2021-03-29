@@ -10,9 +10,11 @@ const Selected = Vue.component('selected', {
   },
   created: function () {
       getEventHub().$on('select', this.selectComponent);
+      getEventHub().$on('clearSelection', this.clearSelection);
     },
     beforeDestroy: function () {
       getEventHub().$off('select', this.selectComponent);
+      getEventHub().off('clearSelection', this.clearSelection);
     },
   methods: {
       selectComponent: function (event) {
@@ -20,6 +22,9 @@ const Selected = Vue.component('selected', {
             this.selected.push(event);
         }
       },
+      clearSelection: function (event) {
+          this.selected =[]
+        },
       removeComponent: function (comp){
         var index = this.selected.indexOf(comp);
         this.selected.splice(index, 1);

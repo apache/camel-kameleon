@@ -1,12 +1,21 @@
-const StandaloneTemplate = `
+const ClassicTemplate = `
 <div>
     <section class="pf-c-page__main-section pf-m-light">
         <div class="pf-l-split pf-m-gutter">
             <div class="pf-l-split__item">
-                <div class="pf-c-content">
-                    <h1 v-model="title" >{{title}}</h1>
-                    <p v-model="subtitle" >{{subtitle}}</p>
+                <div class="pf-c-content pf-l-flex">
+                    <div class="pf-l-flex__item">
+                        <h1 v-model="title" >{{title}}</h1>
+                    </div>
+                    <div class="pf-l-flex__item">
+                        <select @change="onChange" v-model="camelVersion" class="pf-c-form-control" id="version" name="version" aria-label="select version" required>
+                            <option v-for="v in camelVersions" v-bind:value="v">
+                                {{ v }}
+                            </option>
+                        </select>
+                    </div>
                 </div>
+                <p v-model="subtitle" >{{subtitle}}</p>
             </div>
             <div class="pf-l-split__item pf-m-fill"></div>
             <div class="pf-l-split__item">
@@ -36,4 +45,4 @@ const StandaloneTemplate = `
 </div>
 `
 
-export { StandaloneTemplate }
+export { ClassicTemplate }
