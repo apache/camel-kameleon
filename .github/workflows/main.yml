@@ -18,20 +18,8 @@ jobs:
           java-version: 11
 
       - name: Build application
-        run: ./mvnw clean package -Dquarkus.container-image.build=true
-
-      - name: Login to DockerHub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - name: Build and push
-        id: docker_build
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          tags: entropy/kameleon:0.0.1
-
-      - name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
+        run: |
+          ./mvnw clean package \
+          -Dquarkus.container-image.build=true \
+          -Dquarkus.container-image.username=${{ secrets.DOCKERHUB_USERNAME }} \
+          -Dquarkus.container-image.password=${{ secrets.DOCKERHUB_TOKEN }}
