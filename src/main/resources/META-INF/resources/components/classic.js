@@ -6,11 +6,9 @@ import { Selected } from "./selected.js"
 import getEventHub from './event-hub.js'
 
 const Classic = Vue.component('classic', {
-  props: ['type'],
+  props: ['type', 'title'],
   data: function () {
       return {
-          title: '',
-          subtitle: '',
           camelVersions: [],
           camelVersion: '',
           showButton: true
@@ -23,32 +21,16 @@ const Classic = Vue.component('classic', {
   },
   watch: {
     '$route.path': async function(val, oldVal){
-        this.setTitle();
         getEventHub().$emit('clearSelection', '');
         await this.selectCamelVersion();
-        this.setTitle();
         await this.selectComponents();
     }
   },
   mounted: async function () {
-      this.setTitle();
       await this.selectCamelVersion();
-      this.setTitle();
       await this.selectComponents();
   },
   methods: {
-    setTitle: function(){
-        if (this.type === 'main'){
-            this.title = 'Camel Standalone'
-            this.subtitle = 'Maven project for Camel routes running Camel standalone (camel-main)'
-        } else if (this.type === 'spring') {
-            this.title = 'Camel Spring Boot'
-            this.subtitle = 'Maven project for Camel routes running Camel Spring Boot (camel-spring-boot)'
-        } else if (this.type === 'quarkus') {
-            this.title = 'Camel Quarkus'
-            this.subtitle = 'Maven project for Camel routes running Camel Quarkus (camel-quarkus)'
-        }
-    },
     generate : async function(event){
         this.showButton = false;
         const project = this.$children.find(child => { return child.$options.name === "project"; });

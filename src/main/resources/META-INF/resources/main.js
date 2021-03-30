@@ -7,9 +7,10 @@ Vue.use(VueRouter);
 const router = new VueRouter({
   routes: [
     { path: '/', redirect: "/standalone" },
-    { path: '/standalone', component: Classic, props: { type: 'main' } },
-    { path: '/spring', component: Classic, props: { type: 'spring' } },
-    { path: '/quarkus', component: Classic, props: { type: 'quarkus' } }
+    { path: '/standalone', component: Classic, props: { type: 'main', title: 'Standalone' } },
+    { path: '/spring', component: Classic, props: { type: 'spring', title: 'Spring' } },
+    { path: '/cdi', component: Classic, props: { type: 'cdi', title: 'CDI' } },
+    { path: '/quarkus', component: Classic, props: { type: 'quarkus', title: 'Quarkus'} }
   ]
 })
 

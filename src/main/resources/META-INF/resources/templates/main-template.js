@@ -26,6 +26,9 @@ const MainTemplate = `
                         <router-link to="/spring" v-bind:class="[$route.path === '/spring' ? 'pf-m-current' : '', 'pf-c-nav__link']">Spring Boot</router-link>
                     </li>
                     <li class="pf-c-nav__item">
+                        <router-link to="/cdi" v-bind:class="[$route.path === '/cdi' ? 'pf-m-current' : '', 'pf-c-nav__link']">CDI</router-link>
+                    </li>
+                    <li class="pf-c-nav__item">
                         <router-link to="/quarkus" v-bind:class="[$route.path === '/quarkus' ? 'pf-m-current' : '', 'pf-c-nav__link']">Quarkus</router-link>
                     </li>
                 </ul>

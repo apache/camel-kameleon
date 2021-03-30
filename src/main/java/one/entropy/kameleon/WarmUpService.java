@@ -45,7 +45,7 @@ public class WarmUpService {
 
     @ConsumeEvent(value = "warmup", blocking = true)
     void warmup(String message) throws Exception {
-        Arrays.asList("main", "spring", "quarkus").stream().forEach(type -> {
+        Arrays.asList("main", "spring", "quarkus", "cdi").stream().forEach(type -> {
             try {
                 LOGGER.info("Data warmup for " + type);
                 JsonArray versions = versionService.getVersions(type);

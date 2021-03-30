@@ -5,7 +5,7 @@ const ClassicTemplate = `
             <div class="pf-l-split__item">
                 <div class="pf-c-content pf-l-flex">
                     <div class="pf-l-flex__item">
-                        <h1 v-model="title" >{{title}}</h1>
+                        <h1 v-model="title" >Camel {{title}}</h1>
                     </div>
                     <div class="pf-l-flex__item">
                         <select @change="onChange" v-model="camelVersion" class="pf-c-form-control" id="version" name="version" aria-label="select version" required>
@@ -15,7 +15,7 @@ const ClassicTemplate = `
                         </select>
                     </div>
                 </div>
-                <p v-model="subtitle" >{{subtitle}}</p>
+                <p v-model="title">Maven project for Camel routes running Camel {{title}}</p>
             </div>
             <div class="pf-l-split__item pf-m-fill"></div>
             <div class="pf-l-split__item">
