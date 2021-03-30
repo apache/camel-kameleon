@@ -23,12 +23,10 @@ const Classic = Vue.component('classic', {
     '$route.path': async function(val, oldVal){
         getEventHub().$emit('clearSelection', '');
         await this.selectCamelVersion();
-        await this.selectComponents();
     }
   },
   mounted: async function () {
       await this.selectCamelVersion();
-      await this.selectComponents();
   },
   methods: {
     generate : async function(event){
@@ -57,34 +55,14 @@ const Classic = Vue.component('classic', {
           link.click()
     },
     onChange : async function(event){
-        getEventHub().$emit('components', []);
-        this.selectComponents();
+        getEventHub().$emit('versionChanged', this.camelVersion);
     },
     selectCamelVersion: async function (event) {
         var result = [];
         const vRequest = await axios.get('/version/' + this.type);
         this.camelVersions = vRequest.data;
         this.camelVersion = this.camelVersions[0];
-    },
-    selectComponents: async function (event) {
-        var result = await axios.get('/component/' + this.type + '/' + this.camelVersion);
-        getEventHub().$emit('components', result.data);
-    },
-    getNames: async function(version, folder, compList, type){
-        var url = 'https://raw.githubusercontent.com/apache/camel/'+version+'/docs/components/modules/'+folder+'/nav.adoc';
-        var result = [];
-        var regexp= /(?<=\[).*?(?=\])/g;
-        var nRequest = await axios.get(url);
-        var names = nRequest.data.split("\n")
-        compList
-            .filter(element => element.name.startsWith('camel-'))
-            .forEach(e => {
-                var name = names.filter(n => n.includes(e.name.replace('camel-', ':')))[0];
-                  if (name != null){
-                      result.push({"artifact":e.name, "name":name.match(regexp)[0], "type":type});
-                  }
-            });
-        return result;
+        getEventHub().$emit('versionChanged', this.camelVersion);
     },
   },
   template: ClassicTemplate

@@ -21,7 +21,7 @@ const ComponentsTemplate = `
           <td role="cell" data-label="Type">{{comp.type}}</td>
           <td role="cell" data-label="Component">{{comp.name}}</td>
           <td class="pf-c-table__check" role="cell">
-            <button class="pf-c-button pf-m-link pf-m-small" type="button" v-on:click="addComponent(comp)">
+            <button class="pf-c-button pf-m-link pf-m-small" type="button" v-on:click="selectComponent(comp)">
               <span class="pf-c-button__icon pf-m-end">
                 <i class="fas fa-plus" aria-hidden="true"></i>
               </span>

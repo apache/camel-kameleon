@@ -11,18 +11,22 @@ const Components = Vue.component('components', {
     }
   },
   created: function () {
-    getEventHub().$on('components', this.setComponents);
+    getEventHub().$on('versionChanged', this.getComponents);
   },
   beforeDestroy: function () {
-    getEventHub().$off('components', this.setComponents);
+    getEventHub().$off('versionChanged', this.getComponents);
   },
   methods: {
-    addComponent: function (comp){
+    selectComponent: function (comp){
         getEventHub().$emit('select', comp);
     },
-    setComponents: function (comps){
-        this.components = comps;
-        this.setFilter();
+    getComponents: function (camelVersion){
+        this.components =[];
+        axios('/component/' + this.type + '/' + camelVersion)
+        .then(response => {
+            this.components = response.data;
+            this.setFilter();
+        })
     },
     setFilter: function(){
         this.filtered = this.components.filter(e => e.name.toLowerCase().includes(this.filter.toLowerCase()))
