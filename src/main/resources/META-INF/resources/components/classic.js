@@ -22,14 +22,14 @@ const Classic = Vue.component('classic', {
   watch: {
     '$route.path': async function(val, oldVal){
         getEventHub().$emit('clearSelection', '');
-        await this.selectCamelVersion();
+        this.selectCamelVersion();
     }
   },
   mounted: async function () {
-      await this.selectCamelVersion();
+      this.selectCamelVersion();
   },
   methods: {
-    generate : async function(event){
+    generate:  function(event){
         this.showButton = false;
         const project = this.$children.find(child => { return child.$options.name === "project"; });
         const sel = this.$children.find(child => { return child.$options.name === "selected"; });
@@ -54,15 +54,17 @@ const Classic = Vue.component('classic', {
           document.body.appendChild(link)
           link.click()
     },
-    onChange : async function(event){
+    onChange: function(event){
         getEventHub().$emit('versionChanged', {type: this.type, camelVersion: this.camelVersion});
     },
-    selectCamelVersion: async function (event) {
+    selectCamelVersion: function (event) {
         var result = [];
-        const vRequest = await axios.get('/version/' + this.type);
-        this.camelVersions = vRequest.data;
-        this.camelVersion = this.camelVersions[0];
-        getEventHub().$emit('versionChanged', {type: this.type, camelVersion: this.camelVersion});
+        axios.get('/version/' + this.type)
+        .then(response => {
+            this.camelVersions = response.data;
+            this.camelVersion = this.camelVersions.includes(this.camelVersion) ? this.camelVersion : this.camelVersions[0];
+            getEventHub().$emit('versionChanged', {type: this.type, camelVersion: this.camelVersion});
+        })
     },
   },
   template: ClassicTemplate

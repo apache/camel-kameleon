@@ -1,5 +1,6 @@
 package dev.kameleon.component;
 
+import io.quarkus.cache.CacheResult;
 import io.vertx.core.json.JsonArray;
 
 import javax.inject.Inject;
@@ -24,7 +25,7 @@ public class ComponentResource {
     @GET
     @Path("/{type}/{version}")
     @Produces(MediaType.APPLICATION_JSON)
-//    @CacheResult(cacheName = "components")
+    @CacheResult(cacheName = "components")
     public JsonArray components(@PathParam("type") String type, @PathParam("version") String version) throws Exception {
         return "quarkus".equals(type)
                 ? quarkusService.components(version)
