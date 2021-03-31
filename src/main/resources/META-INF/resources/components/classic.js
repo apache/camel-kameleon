@@ -55,14 +55,14 @@ const Classic = Vue.component('classic', {
           link.click()
     },
     onChange : async function(event){
-        getEventHub().$emit('versionChanged', this.camelVersion);
+        getEventHub().$emit('versionChanged', {type: this.type, camelVersion: this.camelVersion});
     },
     selectCamelVersion: async function (event) {
         var result = [];
         const vRequest = await axios.get('/version/' + this.type);
         this.camelVersions = vRequest.data;
         this.camelVersion = this.camelVersions[0];
-        getEventHub().$emit('versionChanged', this.camelVersion);
+        getEventHub().$emit('versionChanged', {type: this.type, camelVersion: this.camelVersion});
     },
   },
   template: ClassicTemplate

@@ -57,7 +57,9 @@ public class VersionService {
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
             StringReader xmlReader = new StringReader(m);
             MavenMetadata metadata = (MavenMetadata) unmarshaller.unmarshal(xmlReader);
-            return metadata.versioning.versions.version.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+            return metadata.versioning.versions.version.stream()
+                    .filter(v -> !v.contains("-RC") && !v.contains("-M") && !v.contains("-CR"))
+                    .sorted(Comparator.reverseOrder()).collect(Collectors.toList());
         } catch (JAXBException e) {
             e.printStackTrace();
         }

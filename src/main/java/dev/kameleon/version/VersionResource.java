@@ -24,5 +24,4 @@ public class VersionResource {
     public Uni<List<String>> versions(@PathParam("type") String type) throws Exception {
         return versionService.getVersions(type);
     }
-
 }

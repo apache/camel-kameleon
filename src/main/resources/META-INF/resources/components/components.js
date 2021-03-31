@@ -20,9 +20,9 @@ const Components = Vue.component('components', {
     selectComponent: function (comp){
         getEventHub().$emit('select', comp);
     },
-    getComponents: function (camelVersion){
+    getComponents: function (event){
         this.components =[];
-        axios('/component/' + this.type + '/' + camelVersion)
+        axios('/component/' + event.type + '/' + event.camelVersion)
         .then(response => {
             this.components = response.data;
             this.setFilter();
