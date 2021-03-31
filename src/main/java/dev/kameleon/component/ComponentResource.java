@@ -1,4 +1,4 @@
-package dev.kameleon;
+package dev.kameleon.component;
 
 import io.quarkus.cache.CacheResult;
 import io.vertx.core.json.JsonArray;

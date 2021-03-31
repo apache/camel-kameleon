@@ -1,5 +1,6 @@
 package dev.kameleon.version;
 
+import io.quarkus.cache.CacheResult;
 import io.smallrye.mutiny.Uni;
 
 import javax.inject.Inject;
@@ -19,7 +20,7 @@ public class VersionResource {
     @GET
     @Path("/{type}")
     @Produces(MediaType.APPLICATION_JSON)
-//    @CacheResult(cacheName = "versions")
+    @CacheResult(cacheName = "versions")
     public Uni<List<String>> versions(@PathParam("type") String type) throws Exception {
         return versionService.getVersions(type);
     }

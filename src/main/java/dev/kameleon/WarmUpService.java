@@ -1,17 +1,15 @@
 package dev.kameleon;
 
+import dev.kameleon.component.ComponentService;
 import dev.kameleon.version.VersionService;
 import io.quarkus.runtime.StartupEvent;
 import io.quarkus.vertx.ConsumeEvent;
-import io.vertx.core.json.JsonArray;
 import io.vertx.mutiny.core.Vertx;
 import org.jboss.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
-import java.util.Arrays;
-import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class WarmUpService {

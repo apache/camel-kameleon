@@ -1,4 +1,4 @@
-package dev.kameleon;
+package dev.kameleon.component;
 
 import io.smallrye.mutiny.tuples.Tuple2;
 import io.vertx.core.json.JsonArray;
