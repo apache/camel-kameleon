@@ -1,5 +1,6 @@
-package one.entropy.kameleon;
+package dev.kameleon;
 
+import dev.kameleon.version.VersionService;
 import io.vertx.mutiny.core.Vertx;
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
 import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;

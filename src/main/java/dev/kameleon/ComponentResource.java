@@ -1,4 +1,4 @@
-package one.entropy.kameleon;
+package dev.kameleon;
 
 import io.quarkus.cache.CacheResult;
 import io.vertx.core.json.JsonArray;

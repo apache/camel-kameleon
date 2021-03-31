@@ -1,4 +1,4 @@
-package one.entropy.kameleon;
+package dev.kameleon;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
