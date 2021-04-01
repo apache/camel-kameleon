@@ -37,7 +37,7 @@ const Classic = Vue.component('classic', {
         axios({
             method: 'get',
             url: '/generator/'+this.type+'/'+this.camelVersion+'/'+project.group+'/'+project.artifact+'/'+project.version+'/' + selected,
-            responseType: 'arraybuffer'
+            responseType: 'blob',
         }).then(response => {
             this.forceFileDownload(response);
             this.showButton = true;
