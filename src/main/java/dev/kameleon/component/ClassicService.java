@@ -58,11 +58,11 @@ public class ClassicService {
 
         components.forEach(name -> {
             Optional<Tuple2<String, String>> values = getClassicName(names, name);
+            String component =  "camel-" + name;
             if (!values.isEmpty()) {
-                result.add(new JsonObject().put("component", name).put("name", values.get().getItem1()).put("type", values.get().getItem2()));
+                result.add(new JsonObject().put("component", component).put("name", values.get().getItem1()).put("type", values.get().getItem2()));
             }
         });
-
         return result;
     }
 
