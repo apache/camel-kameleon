@@ -80,7 +80,11 @@ public class GeneratorService {
         properties.setProperty("version", version);
         properties.setProperty("archetypeVersion", archetypeVersion);
         properties.setProperty("archetypeGroupId", ConfigProvider.getConfig().getValue("camel.archetype.group." + type, String.class));
-        properties.setProperty("archetypeArtifactId", ConfigProvider.getConfig().getValue("camel.archetype.artifact." + type, String.class));
+        properties.setProperty("archetypeArtifactId",
+                archetypeVersion.startsWith("1") || archetypeVersion.startsWith("2")
+                ? ConfigProvider.getConfig().getValue("camel.archetype.artifact." + type +".legacy", String.class)
+                : ConfigProvider.getConfig().getValue("camel.archetype.artifact." + type, String.class)
+        );
 
         InvocationRequest request = new DefaultInvocationRequest();
         request.setGoals(Collections.singletonList("archetype:generate"));

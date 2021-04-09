@@ -67,11 +67,13 @@ public class LegacyService {
     }
 
     private JsonArray componentList(String version) throws ExecutionException, InterruptedException {
-        String url = "/repos/apache/camel/contents/catalog/camel-catalog/src/generated/resources/org/apache/camel/catalog/components?ref=camel-" + version;
+        String url = "/repos/apache/camel/contents/components?ref=camel-" + version;
         return client.get(url).send().map(resp -> {
             if (resp.statusCode() == 200) {
                 return resp.bodyAsJsonArray();
             } else {
+                System.out.println(resp.statusCode());
+                System.out.println(resp.bodyAsString());
                 return new JsonArray();
             }
         }).subscribe().asCompletionStage().get();
