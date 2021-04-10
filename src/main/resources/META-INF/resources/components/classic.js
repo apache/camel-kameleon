@@ -11,6 +11,8 @@ const Classic = Vue.component('classic', {
       return {
           camelVersions: [],
           camelVersion: '',
+          javaVersions: [],
+          javaVersion: '',
           showButton: true
       }
     },
@@ -28,6 +30,12 @@ const Classic = Vue.component('classic', {
   mounted: async function () {
       this.selectCamelVersion();
   },
+  created: function () {
+    getEventHub().$on('versionChanged', this.setJavaVersions);
+  },
+  beforeDestroy: function () {
+    getEventHub().$off('versionChanged', this.setJavaVersions);
+  },
   methods: {
     generate:  function(event){
         this.showButton = false;
@@ -36,7 +44,7 @@ const Classic = Vue.component('classic', {
         const selected = sel.selected.map((item) => item['component']).join(",");
         axios({
             method: 'get',
-            url: '/generator/'+this.type+'/'+this.camelVersion+'/'+project.group+'/'+project.artifact+'/'+project.version+'/' + selected,
+            url: '/generator/'+this.type+'/'+this.camelVersion+'/'+project.group+'/'+project.artifact+'/'+project.version+'/' + this.javaVersion +'/' + selected,
             responseType: 'blob',
         }).then(response => {
             this.forceFileDownload(response);
@@ -64,6 +72,16 @@ const Classic = Vue.component('classic', {
             this.camelVersions = response.data;
             this.camelVersion = this.camelVersions.includes(this.camelVersion) ? this.camelVersion : this.camelVersions[0];
             getEventHub().$emit('versionChanged', {type: this.type, camelVersion: this.camelVersion});
+        })
+    },
+    setJavaVersions: function (event) {
+        var result = [];
+        axios.get('/java/' + this.camelVersion)
+        .then(response => {
+            this.javaVersions = response.data;
+            this.javaVersion = this.javaVersions.includes(this.javaVersion)
+                ? this.javaVersion
+                : this.javaVersions.includes("11") ? "11" : this.javaVersions[0];
         })
     },
   },

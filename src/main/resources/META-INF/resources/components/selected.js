@@ -8,7 +8,7 @@ const Selected = Vue.component('selected', {
         selected: []
     }
   },
-  created: function () {
+    created: function () {
       getEventHub().$on('select', this.selectComponent);
       getEventHub().$on('clearSelection', this.clearSelection);
     },

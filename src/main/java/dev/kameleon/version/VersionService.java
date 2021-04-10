@@ -30,7 +30,7 @@ public class VersionService {
     private final static List<String> CLASSIC_DEFAULT = List.of("3.9.0");
     private final static String QUARKUS_VERSION = "1.12.2.Final";
 
-    @ConfigProperty(name = "camel.versions.lts.classic")
+    @ConfigProperty(name = "kameleon.versions.lts.classic")
     String ltsClassic;
 
     @Inject
@@ -49,14 +49,14 @@ public class VersionService {
         String url = ConfigProvider.getConfig().getValue("kameleon.archetype.metadata." + type, String.class);
         return client.getAbs(url).send().map(resp -> {
             if (resp.statusCode() == 200) {
-                return getVersionsFromMetadata(resp.bodyAsString());
+                return getVersionsFromMetadata(resp.bodyAsString(), type);
             } else {
                 return "quarkus".equals(type) ? QUARKUS_DEFAULT : CLASSIC_DEFAULT;
             }
         });
     }
 
-    private List<String> getVersionsFromMetadata(String m) {
+    private List<String> getVersionsFromMetadata(String m, String type) {
         List<String> result = new ArrayList<>();
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(MavenMetadata.class);
@@ -66,6 +66,7 @@ public class VersionService {
 
             List<ComparableVersion> allVersions = metadata.versioning.versions.version.stream()
                     .filter(v -> !v.contains("-RC") && !v.contains("-M") && !v.contains("-CR"))
+                    .filter(v ->  (!"quarkus".equals(type) && !v.startsWith("1")) || "quarkus".equals(type))
                     .map(s -> new ComparableVersion(s))
                     .sorted(Comparator.reverseOrder()).collect(Collectors.toList());
 

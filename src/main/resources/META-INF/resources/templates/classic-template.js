@@ -14,6 +14,16 @@ const ClassicTemplate = `
                             </option>
                         </select>
                     </div>
+                    <div v-show="type!='quarkus'" class="pf-l-flex__item">
+                        <h1>with Java</h1>
+                    </div>
+                    <div v-show="type!='quarkus'" class="pf-l-flex__item">
+                        <select @change="onChange" v-model="javaVersion" class="pf-c-form-control" id="java" name="java" aria-label="select version" required>
+                            <option v-for="v in javaVersions" v-bind:value="v">
+                                {{ v }}
+                            </option>
+                        </select>
+                    </div>
                 </div>
                 <p v-model="title">Maven project for Camel routes running Camel {{title}}</p>
             </div>
