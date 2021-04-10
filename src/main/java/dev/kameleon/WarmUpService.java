@@ -55,7 +55,7 @@ public class WarmUpService {
             String version = versions.subscribe().asCompletionStage().get().get(0);
             JsonArray componentArray = componentResource.components(type, version);
             String components = componentArray.stream().map(o -> o.toString()).collect(Collectors.joining(","));
-            generatorService.generate(type, version, "dev.kameleon", "demo", "0.0.1", components);
+            generatorService.generate(type, version, "dev.kameleon", "demo", "0.0.1", "11", components);
             LOGGER.info("Data warmup done for " + type);
         } catch (Exception e) {
             LOGGER.error(e);

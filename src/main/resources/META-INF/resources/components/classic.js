@@ -66,7 +66,6 @@ const Classic = Vue.component('classic', {
         getEventHub().$emit('versionChanged', {type: this.type, camelVersion: this.camelVersion});
     },
     selectCamelVersion: function (event) {
-        var result = [];
         axios.get('/version/' + this.type)
         .then(response => {
             this.camelVersions = response.data;
@@ -75,14 +74,17 @@ const Classic = Vue.component('classic', {
         })
     },
     setJavaVersions: function (event) {
-        var result = [];
-        axios.get('/java/' + this.camelVersion)
-        .then(response => {
-            this.javaVersions = response.data;
-            this.javaVersion = this.javaVersions.includes(this.javaVersion)
-                ? this.javaVersion
-                : this.javaVersions.includes("11") ? "11" : this.javaVersions[0];
-        })
+        if (this.type === 'quarkus'){
+            this.javaVersion = '11'
+        } else {
+            axios.get('/java/' + this.camelVersion)
+                .then(response => {
+                    this.javaVersions = response.data;
+                    this.javaVersion = this.javaVersions.includes(this.javaVersion)
+                        ? this.javaVersion
+                        : this.javaVersions.includes("11") ? "11" : this.javaVersions[0];
+                })
+        }
     },
   },
   template: ClassicTemplate
