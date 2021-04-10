@@ -96,7 +96,7 @@ public class GeneratorService {
             throws MavenInvocationException, IOException {
         Properties properties = new Properties();
         properties.setProperty("groupId", groupId);
-        properties.setProperty("package", groupId + "." + artifactId);
+        properties.setProperty("package", generatePackageName(groupId , artifactId));
         properties.setProperty("artifactId", artifactId);
         properties.setProperty("version", version);
         properties.setProperty("archetypeVersion", archetypeVersion);
@@ -120,7 +120,7 @@ public class GeneratorService {
             throws MavenInvocationException, IOException {
         Properties properties = new Properties();
         properties.setProperty("groupId", groupId);
-        properties.setProperty("package", groupId + "." + artifactId);
+        properties.setProperty("package", generatePackageName(groupId , artifactId));
         properties.setProperty("artifactId", artifactId);
         properties.setProperty("version", version);
         properties.setProperty("extensions", components);
@@ -132,6 +132,17 @@ public class GeneratorService {
         request.setBaseDirectory(folder);
 
         execute(request);
+    }
+
+    private static String generatePackageName(String groupId, String artifactId) {
+        StringBuilder cleanArtifact = new StringBuilder();
+        for (Character c : artifactId.toCharArray()) {
+            if (Character.isJavaIdentifierPart(c)) {
+                cleanArtifact.append(c);
+            }
+        }
+        System.out.println(groupId +"."+ cleanArtifact);
+        return groupId +"."+ cleanArtifact;
     }
 
     private void execute(InvocationRequest request) throws MavenInvocationException, IOException {
