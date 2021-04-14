@@ -8,9 +8,9 @@ const ClassicTemplate = `
                         <h1 v-model="title" >Camel {{title}}</h1>
                     </div>
                     <div class="pf-l-flex__item">
-                        <select @change="onChange" v-model="camelVersion" class="pf-c-form-control" id="version" name="version" aria-label="select version" required>
-                            <option v-for="v in camelVersions" v-bind:value="v">
-                                {{ v }}
+                        <select @change="onCamelChange" v-model="camelVersion" class="pf-c-form-control" id="version" name="version" aria-label="select version" required>
+                            <option v-for="v in current.versions" v-bind:value="v">
+                                {{ v.name + (v.lts ? " LTS" : "") }}
                             </option>
                         </select>
                     </div>
@@ -18,8 +18,8 @@ const ClassicTemplate = `
                         <h1>with Java</h1>
                     </div>
                     <div v-show="type!='quarkus'" class="pf-l-flex__item">
-                        <select @change="onChange" v-model="javaVersion" class="pf-c-form-control" id="java" name="java" aria-label="select version" required>
-                            <option v-for="v in javaVersions" v-bind:value="v">
+                        <select v-model="javaVersion" class="pf-c-form-control" id="java" name="java" aria-label="select version" required>
+                            <option v-for="v in camelVersion.javaVersions" v-bind:value="v">
                                 {{ v }}
                             </option>
                         </select>
@@ -53,6 +53,6 @@ const ClassicTemplate = `
     </section>
 
 </div>
-`
+`;
 
-export { ClassicTemplate }
+export { ClassicTemplate };

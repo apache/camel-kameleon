@@ -72,8 +72,6 @@ public class LegacyService {
             if (resp.statusCode() == 200) {
                 return resp.bodyAsJsonArray();
             } else {
-                System.out.println(resp.statusCode());
-                System.out.println(resp.bodyAsString());
                 return new JsonArray();
             }
         }).subscribe().asCompletionStage().get();

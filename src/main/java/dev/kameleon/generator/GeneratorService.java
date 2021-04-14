@@ -1,6 +1,7 @@
-package dev.kameleon;
+package dev.kameleon.generator;
 
-import dev.kameleon.version.VersionService;
+import dev.kameleon.config.CamelType;
+import dev.kameleon.config.ConfigurationResource;
 import io.vertx.mutiny.core.Vertx;
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
 import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;
@@ -27,14 +28,17 @@ import java.util.stream.Collectors;
 public class GeneratorService {
 
     @Inject
-    VersionService versionService;
+    Vertx vertx;
+
+    @Inject
+    ConfigurationResource configurationResource;
 
     static final String MAVEN_REPO = System.getProperty("java.io.tmpdir") + "/maven";
 
     public String generate(String type, String archetypeVersion,
                            String groupId, String artifactId, String version, String javaVersion, String components) throws Exception {
         String uuid = UUID.randomUUID().toString();
-        String folder = Vertx.vertx().fileSystem().createTempDirectoryBlocking(uuid);
+        String folder = vertx.fileSystem().createTempDirectoryBlocking(uuid);
         File temp = new File(folder);
         String zipFileName = temp.getAbsolutePath() + "/" + artifactId + ".zip";
         if (!"quarkus".equals(type)) {
@@ -49,7 +53,8 @@ public class GeneratorService {
                 packageProject(folderName, zipFileName);
             }
         } else {
-            String quarkusVersion = versionService.getQuarkusVersion(archetypeVersion);
+            CamelType camelType = configurationResource.getKc().getTypes().stream().filter(t -> t.getName().equals("quarkus")).findFirst().get();
+            String quarkusVersion = camelType.getVersions().stream().filter(cv -> cv.getName().equals(archetypeVersion)).findFirst().get().getRuntimeVersion();
             generateQuarkusArchetype(temp, quarkusVersion, groupId, artifactId, version, components);
             String folderName = temp.getAbsolutePath() + "/code-with-quarkus";
             packageProject(folderName, zipFileName);
@@ -141,7 +146,6 @@ public class GeneratorService {
                 cleanArtifact.append(c);
             }
         }
-        System.out.println(groupId +"."+ cleanArtifact);
         return groupId +"."+ cleanArtifact;
     }
 

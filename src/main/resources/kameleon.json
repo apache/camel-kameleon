@@ -1,0 +1,114 @@
+{
+  "types": [
+    {
+      "name": "standalone",
+      "versions": [
+        {
+          "name": "3.9.0",
+          "lts": false,
+          "javaVersions": ["14", "11", "1.8"],
+          "defaultJava": "11",
+          "runtimeVersion": "",
+          "archetypeGroupId": "org.apache.camel.archetypes",
+          "archetypeArtifactId": "camel-archetype-main"
+        },
+        {
+          "name": "3.7.3",
+          "lts": true,
+          "javaVersions": ["14", "11", "1.8"],
+          "defaultJava": "11",
+          "runtimeVersion": "",
+          "archetypeGroupId": "org.apache.camel.archetypes",
+          "archetypeArtifactId": "camel-archetype-main"
+        },
+        {
+          "name": "2.25.3",
+          "lts": true,
+          "javaVersions": ["1.8"],
+          "defaultJava": "1.8",
+          "runtimeVersion": "",
+          "archetypeGroupId": "org.apache.camel.archetypes",
+          "archetypeArtifactId": "camel-archetype-java8"
+        }
+      ]
+    },
+    {
+      "name": "spring",
+      "versions": [
+        {
+          "name": "3.9.0",
+          "lts": false,
+          "javaVersions": ["14", "11", "1.8"],
+          "defaultJava": "11",
+          "runtimeVersion": "",
+          "archetypeGroupId": "org.apache.camel.archetypes",
+          "archetypeArtifactId": "camel-archetype-spring-boot"
+        },
+        {
+          "name": "3.7.3",
+          "lts": true,
+          "javaVersions": ["14", "11", "1.8"],
+          "defaultJava": "11",
+          "runtimeVersion": "",
+          "archetypeGroupId": "org.apache.camel.archetypes",
+          "archetypeArtifactId": "camel-archetype-spring-boot"
+        },
+        {
+          "name": "2.25.3",
+          "lts": true,
+          "javaVersions": ["1.8"],
+          "defaultJava": "1.8",
+          "runtimeVersion": "",
+          "archetypeGroupId": "org.apache.camel.archetypes",
+          "archetypeArtifactId": "camel-archetype-spring-boot"
+        }
+      ]
+    },
+    {
+      "name": "cdi",
+      "versions": [
+        {
+          "name": "3.9.0",
+          "lts": false,
+          "javaVersions": ["14", "11", "1.8"],
+          "defaultJava": "11",
+          "runtimeVersion": "",
+          "archetypeGroupId": "org.apache.camel.archetypes",
+          "archetypeArtifactId": "camel-archetype-cdi"
+        },
+        {
+          "name": "3.7.3",
+          "lts": true,
+          "javaVersions": ["14", "11", "1.8"],
+          "defaultJava": "11",
+          "runtimeVersion": "",
+          "archetypeGroupId": "org.apache.camel.archetypes",
+          "archetypeArtifactId": "camel-archetype-cdi"
+        },
+        {
+          "name": "2.25.3",
+          "lts": true,
+          "javaVersions": ["1.8"],
+          "defaultJava": "1.8",
+          "runtimeVersion": "",
+          "archetypeGroupId": "org.apache.camel.archetypes",
+          "archetypeArtifactId": "camel-archetype-cdi"
+        }
+      ]
+    },
+    {
+      "name": "quarkus",
+      "versions": [
+        {
+          "name": "1.8.1",
+          "lts": false,
+          "javaVersions": ["11"],
+          "defaultJava": "11",
+          "runtimeVersion": "1.12.2.Final",
+          "archetypeGroupId": "io.quarkus",
+          "archetypeArtifactId": "quarkus-maven-plugin"
+        }
+      ]
+    }
+  ]
+}

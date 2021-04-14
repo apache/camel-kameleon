@@ -8,9 +8,9 @@ import static io.restassured.RestAssured.given;
 @QuarkusTest
 public class GeneratorResourceTest {
 
-    @Test
-    public void generateEndpoint() {
-        // TODO:
-    }
+//    @Test
+//    public void generateEndpoint() {
+//        // TODO:
+//    }
 
 }
