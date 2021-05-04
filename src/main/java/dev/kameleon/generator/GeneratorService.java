@@ -1,6 +1,7 @@
 package dev.kameleon.generator;
 
 import dev.kameleon.config.CamelType;
+import dev.kameleon.config.CamelVersion;
 import dev.kameleon.config.ConfigurationResource;
 import io.vertx.mutiny.core.Vertx;
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
@@ -101,18 +102,17 @@ public class GeneratorService {
     private void generateClassicArchetype(File folder, String type, String archetypeVersion,
                                           String groupId, String artifactId, String version)
             throws MavenInvocationException, IOException {
+        CamelType camelType = configurationResource.getKc().getTypes().stream().filter(ct -> ct.getName().equals(type)).findFirst().get();
+        CamelVersion camelVersion = camelType.getVersions().stream().filter(cv -> cv.getName().equals(archetypeVersion)).findFirst().get();
+
         Properties properties = new Properties();
         properties.setProperty("groupId", groupId);
         properties.setProperty("package", generatePackageName(groupId , artifactId));
         properties.setProperty("artifactId", artifactId);
         properties.setProperty("version", version);
         properties.setProperty("archetypeVersion", archetypeVersion);
-        properties.setProperty("archetypeGroupId", ConfigProvider.getConfig().getValue("kameleon.archetype.group." + type, String.class));
-        properties.setProperty("archetypeArtifactId",
-                archetypeVersion.startsWith("1") || archetypeVersion.startsWith("2")
-                        ? ConfigProvider.getConfig().getValue("kameleon.archetype.artifact." + type + ".legacy", String.class)
-                        : ConfigProvider.getConfig().getValue("kameleon.archetype.artifact." + type, String.class)
-        );
+        properties.setProperty("archetypeGroupId", camelVersion.getArchetypeGroupId());
+        properties.setProperty("archetypeArtifactId", camelVersion.getArchetypeArtifactId());
 
         InvocationRequest request = new DefaultInvocationRequest();
         request.setGoals(Collections.singletonList("archetype:generate"));
