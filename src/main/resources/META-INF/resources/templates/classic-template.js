@@ -10,7 +10,7 @@ const ClassicTemplate = `
                     <div class="pf-l-flex__item">
                         <select @change="onCamelChange" v-model="camelVersion" class="pf-c-form-control" id="version" name="version" aria-label="select version" required>
                             <option v-for="v in current.versions" v-bind:value="v">
-                                {{ v.name + (v.lts ? " LTS" : "") }}
+                                {{ v.name + ' ' + v.suffix }}
                             </option>
                         </select>
                     </div>

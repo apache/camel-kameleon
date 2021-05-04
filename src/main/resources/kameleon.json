@@ -5,7 +5,7 @@
       "versions": [
         {
           "name": "3.9.0",
-          "lts": false,
+          "suffix": "",
           "javaVersions": ["14", "11", "1.8"],
           "defaultJava": "11",
           "runtimeVersion": "",
@@ -13,8 +13,8 @@
           "archetypeArtifactId": "camel-archetype-main"
         },
         {
-          "name": "3.7.3",
-          "lts": true,
+          "name": "3.7.4",
+          "suffix": "LTS",
           "javaVersions": ["14", "11", "1.8"],
           "defaultJava": "11",
           "runtimeVersion": "",
@@ -23,7 +23,7 @@
         },
         {
           "name": "2.25.3",
-          "lts": true,
+          "suffix": "Legacy",
           "javaVersions": ["1.8"],
           "defaultJava": "1.8",
           "runtimeVersion": "",
@@ -37,7 +37,7 @@
       "versions": [
         {
           "name": "3.9.0",
-          "lts": false,
+          "suffix": "",
           "javaVersions": ["14", "11", "1.8"],
           "defaultJava": "11",
           "runtimeVersion": "",
@@ -45,8 +45,8 @@
           "archetypeArtifactId": "camel-archetype-spring-boot"
         },
         {
-          "name": "3.7.3",
-          "lts": true,
+          "name": "3.7.4",
+          "suffix": "LTS",
           "javaVersions": ["14", "11", "1.8"],
           "defaultJava": "11",
           "runtimeVersion": "",
@@ -55,7 +55,7 @@
         },
         {
           "name": "2.25.3",
-          "lts": true,
+          "suffix": "Legacy",
           "javaVersions": ["1.8"],
           "defaultJava": "1.8",
           "runtimeVersion": "",
@@ -69,7 +69,7 @@
       "versions": [
         {
           "name": "3.9.0",
-          "lts": false,
+          "suffix": "",
           "javaVersions": ["14", "11", "1.8"],
           "defaultJava": "11",
           "runtimeVersion": "",
@@ -77,8 +77,8 @@
           "archetypeArtifactId": "camel-archetype-cdi"
         },
         {
-          "name": "3.7.3",
-          "lts": true,
+          "name": "3.7.4",
+          "suffix": "LTS",
           "javaVersions": ["14", "11", "1.8"],
           "defaultJava": "11",
           "runtimeVersion": "",
@@ -87,7 +87,7 @@
         },
         {
           "name": "2.25.3",
-          "lts": true,
+          "suffix": "Legacy",
           "javaVersions": ["1.8"],
           "defaultJava": "1.8",
           "runtimeVersion": "",
@@ -101,10 +101,10 @@
       "versions": [
         {
           "name": "1.8.1",
-          "lts": false,
+          "suffix": "",
           "javaVersions": ["11"],
           "defaultJava": "11",
-          "runtimeVersion": "1.12.2.Final",
+          "runtimeVersion": "1.13.2.Final",
           "archetypeGroupId": "io.quarkus",
           "archetypeArtifactId": "quarkus-maven-plugin"
         }

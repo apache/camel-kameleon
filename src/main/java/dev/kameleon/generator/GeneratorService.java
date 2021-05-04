@@ -27,6 +27,8 @@ import java.util.stream.Collectors;
 @ApplicationScoped
 public class GeneratorService {
 
+    private static final String CAMEL_QUARKUS_CORE = "camel-quarkus-core";
+
     @Inject
     Vertx vertx;
 
@@ -128,7 +130,9 @@ public class GeneratorService {
         properties.setProperty("package", generatePackageName(groupId , artifactId));
         properties.setProperty("artifactId", artifactId);
         properties.setProperty("version", version);
-        properties.setProperty("extensions", components);
+//        properties.setProperty("noExamples", "true");
+        properties.setProperty("extensions",
+                (components !=null && !components.trim().isEmpty()) ? CAMEL_QUARKUS_CORE +"," + components: CAMEL_QUARKUS_CORE);
 
         InvocationRequest request = new DefaultInvocationRequest();
         request.setGoals(Collections.singletonList("io.quarkus:quarkus-maven-plugin:" + quarkusVersion + ":create "));

@@ -4,7 +4,7 @@ import java.util.List;
 
 public class CamelVersion {
     private String name;
-    private Boolean lts;
+    private String suffix;
     private List<String> javaVersions;
     private String defaultJava;
     private String runtimeVersion; // ex. Quarkus version
@@ -14,10 +14,10 @@ public class CamelVersion {
     public CamelVersion() {
     }
 
-    public CamelVersion(String name, Boolean lts, List<String> javaVersions, String defaultJava, String runtimeVersion,
+    public CamelVersion(String name, String suffix, List<String> javaVersions, String defaultJava, String runtimeVersion,
                         String archetypeGroupId, String archetypeArtifactId) {
         this.name = name;
-        this.lts = lts;
+        this.suffix = suffix;
         this.javaVersions = javaVersions;
         this.defaultJava = defaultJava;
         this.runtimeVersion = runtimeVersion;
@@ -33,12 +33,12 @@ public class CamelVersion {
         this.name = name;
     }
 
-    public Boolean getLts() {
-        return lts;
+    public String getSuffix() {
+        return suffix;
     }
 
-    public void setLts(Boolean lts) {
-        this.lts = lts;
+    public void setSuffix(String suffix) {
+        this.suffix = suffix;
     }
 
     public List<String> getJavaVersions() {
