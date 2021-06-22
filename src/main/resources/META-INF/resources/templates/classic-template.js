@@ -1,6 +1,6 @@
 const ClassicTemplate = `
 <div>
-    <section class="pf-c-page__main-section pf-m-light">
+    <section class="pf-c-page__main-section pf-m-light top-border">
         <div class="pf-l-split pf-m-gutter">
             <div class="pf-l-split__item">
                 <div class="pf-c-content pf-l-flex">

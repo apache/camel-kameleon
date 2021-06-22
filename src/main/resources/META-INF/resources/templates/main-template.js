@@ -1,12 +1,11 @@
 const MainTemplate = `
-<div class="pf-c-page" id="page-default-nav-example">
-    <a class="pf-c-skip-to-content pf-c-button pf-m-primary" href="#main-content-page-default-nav-example">Skip to
-        content</a>
+<div class="pf-c-page" id="page-default-nav">
+    <a class="pf-c-skip-to-content pf-c-button pf-m-primary" href="#main-content-page-default-nav">Skip to content</a>
     <header class="pf-c-page__header pf-c-light">
         <div class="pf-c-page__header-brand">
             <a class="logo" href="../.."></a>
             <a class="pf-c-page__header-brand-link">
-                <h1 class="header">KAMELEON 0.0.6</h1>
+                <h1 class="header">KAMELEON 0.0.7</h1>
             </a>
         </div>
         <div class="pf-c-page__header-tools">
@@ -15,9 +14,9 @@ const MainTemplate = `
             </>
         </div>
     </header>
-    <div class="pf-c-page__sidebar pf-m-dark" id="sidebar">
+    <div class="pf-c-page__sidebar pf-m-light" id="sidebar">
         <div class="pf-c-page__sidebar-body">
-            <nav class="pf-c-nav pf-m-dark" id="page-default-nav-example-primary-nav" aria-label="Global">
+            <nav class="pf-c-nav pf-m-light" id="page-default-nav-example-primary-nav" aria-label="Global">
                 <ul class="pf-c-nav__list">
                     <li class="pf-c-nav__item">
                         <router-link to="/standalone" v-bind:class="[$route.path === '/standalone' ? 'pf-m-current' : '', 'pf-c-nav__link']">Standalone</router-link>
