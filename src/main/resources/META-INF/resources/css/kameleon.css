@@ -17,6 +17,7 @@
     --pf-global--active-color--400: var(--pf-global--palette--orange-400) !important;
 
     --header--Color: #FFFFFF;
+    --grey--Color: #e1e1e1;
     --font--Color: #e97826;
     --title--Color: #303284;;
     --font-stack: "Open Sans", sans-serif;
@@ -58,17 +59,17 @@ h1 {
     border-top: none;
 }
 .top-border {
-    -webkit-box-shadow: 0 -1px 0 #e1e1e1;
-    box-shadow: 0 -1px 0 #e1e1e1;
+    -webkit-box-shadow: 0 -1px 0 var(--grey--Color);
+    box-shadow: 0 -1px 0 var(--grey--Color);
     margin-top: 1px;
 }
 
 .pf-c-page__sidebar {
-    box-shadow: 1px 0px #e1e1e1;
+    box-shadow: 1px 0px var(--grey--Color);
 }
 
 .pf-c-card__title {
-     background: #e1e1e1;
+     background: var(--grey--Color);
      margin-bottom: 1em;
  }
 
@@ -161,4 +162,32 @@ h1 {
     background-color: white;
 }
 
-.pf-c-form__group-label
+/* Tooltip */
+
+.component-name .tooltip .pf-c-tooltip__arrow {
+    background-color: var(--grey--Color);
+}
+.component-name .tooltip .pf-c-tooltip__content {
+    background-color: var(--grey--Color);
+    color: var(--pf-c-content--Color);
+}
+
+.component-name {
+  position: relative;
+}
+
+.component-name .tooltip {
+  visibility: visible;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s;
+  top: -30px;
+  padding-left: 20px;
+  width: 600px;
+}
+
+.component-name:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}

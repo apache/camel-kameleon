@@ -15,11 +15,23 @@ const ComponentsTemplate = `
         <div class="pf-c-toolbar__expandable-content pf-m-hidden" id="page-layout-table-compact-toolbar-expandable-content" hidden></div>
       </div>
     </div>
-    <table class="pf-c-table pf-m-compact pf-m-grid-lg" role="grid" aria-label="This is a compact table example" id="page-layout-table-compact-table">
+    <table class="pf-c-table pf-m-compact pf-m-grid-lg" role="grid" id="page-layout-table-compact-table">
       <tbody role="rowgroup">
         <tr role="row" v-for="comp in filtered" :key="comp">
           <td role="cell" data-label="Type">{{comp.type}}</td>
-          <td role="cell" data-label="Component">{{comp.name}}</td>
+          <td role="cell" data-label="Component">
+              <div>
+                  <div class="component-name">{{comp.name}}
+                    <span class="tooltip">
+                        <div class="pf-c-tooltip pf-m-right" role="tooltip">
+                          <div class="pf-c-tooltip__arrow"></div>
+                          <div class="pf-c-tooltip__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id feugiat augue, nec fringilla turpis.</div>
+                        </div>
+                    </span>
+                  </div>
+                </div>
+            </div>
+          </td>
           <td class="pf-c-table__check" role="cell">
             <button class="pf-c-button pf-m-link pf-m-small" type="button" v-on:click="selectComponent(comp)">
               <span class="pf-c-button__icon pf-m-end">
