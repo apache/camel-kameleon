@@ -1,6 +1,6 @@
 const SelectedTemplate = `
 <div v-show="selected.length != 0" class="pf-c-card selected">
-   <div class="pf-c-card__title">Selected components:</div>
+   <div class="pf-c-card__title">Selected components: ({{selected.length}})</div>
     <div class="pf-c-toolbar" id="page-layout-table-compact-toolbar">
       <div class="pf-c-toolbar__content">
         <div class="pf-c-toolbar__content-section pf-m-nowrap">

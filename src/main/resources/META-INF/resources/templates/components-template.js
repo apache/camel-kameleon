@@ -15,37 +15,33 @@ const ComponentsTemplate = `
         <div class="pf-c-toolbar__expandable-content pf-m-hidden" id="page-layout-table-compact-toolbar-expandable-content" hidden></div>
       </div>
     </div>
-    <table class="pf-c-table pf-m-compact pf-m-grid-lg" role="grid" id="page-layout-table-compact-table">
-      <tbody role="rowgroup">
-        <tr role="row" v-for="comp in filtered" :key="comp">
-          <td role="cell" data-label="Component">
-                <div class="component-name">{{comp.name}}
-                    <span v-if="comp.supportLevel != 'Stable'" class="pf-c-badge pf-m-unread">{{comp.supportLevel}}</span>
-                    <div class="tooltip">
-                        <div class="pf-c-tooltip pf-m-bottom" role="tooltip">
-                          <div class="pf-c-tooltip__arrow"></div>
-                          <div class="pf-c-tooltip__content">{{comp.description}}</div>
+    <section class="pf-c-page__main-section components-grid pf-m-fill">
+        <div class="pf-l-gallery pf-m-gutter">
+            <div v-for="comp in filtered" :key="comp" class="pf-c-card pf-m-hoverable pf-m-compact component-card">
+              <div class="pf-c-card__header">
+                    <div class="pf-c-content pf-l-flex badge">
+                        <div v-for="label in comp.labels" :key="label" class="pf-l-flex__item">
+                            <span class="pf-c-badge pf-m-read">{{label}}</span>
                         </div>
                     </div>
+              </div>
+              <div class="pf-c-card__title component-title">
+                <div class="pf-c-content pf-l-flex">
+                    <p id="card-1-check-label">{{comp.name}}</p>
+                    <span v-if="comp.supportLevel != 'Stable'" class="pf-c-badge pf-m-unread">{{comp.supportLevel}}</span>
                 </div>
-          </td>
-          <td class="pf-m-width-30" role="cell" data-label="Labels">
-                <div class="pf-c-content pf-l-flex badge">
-                    <div v-for="label in comp.labels" :key="label" class="pf-l-flex__item">
-                        <span class="pf-c-badge pf-m-read">{{label}}</span>
-                    </div>
-                </div>
-          </td>
-          <td class="pf-m-width-10 pf-c-table__check" role="cell" data-label="Action">
-            <button class="pf-c-button pf-m-link pf-m-small" type="button" v-on:click="selectComponent(comp)">
-              <span class="pf-c-button__icon pf-m-end">
-                <i class="fas fa-plus" aria-hidden="true"></i>
-              </span>
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+              </div>
+              <div class="pf-c-card__body">{{comp.description}}</div>
+              <div class="pf-c-card__actions">
+                <button class="pf-c-button pf-m-link pf-m-small" type="button" v-on:click="selectComponent(comp)">
+                  <span class="pf-c-button__icon pf-m-end">
+                    <i class="fas fa-plus" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </div>
+            </div>
+        </div>
+    </section>
   </div>
 `
 

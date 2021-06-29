@@ -150,10 +150,6 @@ h1 {
     height: 9em;
 }
 
-.pf-c-card__title {
-    height: 100%;
-}
-
 .value {
     width: 20%;
 }
@@ -162,44 +158,21 @@ h1 {
     background-color: white;
 }
 
+.components-grid {
+ padding: 1em;
+}
+
+.component-title {
+    background: transparent;
+}
+
+.component-card  .pf-c-card__body {
+    padding-bottom: 0;
+}
+
 /* Tooltip */
 .component-name {
   position: relative;
-}
-
-.component-name .tooltip {
-  visibility: hidden;
-  display: block;
-  min-width: 240px;
-  text-align: center;
-  padding: 5px 0;
-  opacity: 0;
-  transition: opacity 0.3s;
-  position: absolute;
-  z-index: 1;
-}
-
-.component-name:hover .tooltip {
-  visibility: visible;
-  opacity: 1;
-}
-
-.component-name .tooltip:hover {
-  visibility: hidden;
-  opacity: 0;
-}
-
-.component-name .tooltip .pf-c-tooltip__arrow {
-    background-color: var(--grey--Color);
-}
-
-.component-name .tooltip .pf-c-tooltip.pf-m-bottom .pf-c-tooltip__arrow {
-    left: 20px;
-}
-.component-name .tooltip .pf-c-tooltip__content {
-    background-color: var(--grey--Color);
-    color: #151515;
-    font-weight: 100;
 }
 
 .badge .pf-l-flex__item {
