@@ -22,7 +22,7 @@ public class LegacyBuilder extends AbstractBuilder {
     private static final Pattern p = Pattern.compile("\\[([^\\]]+)\\]");
 
     public static List<CamelComponent> getComponents(WebClient client, String version) {
-        LOGGER.fine("--- Legacy components:");
+        LOGGER.info("--- Legacy components: " + version);
         List<CamelComponent> camelComponents = new ArrayList<>(200);
         try {
             JsonArray components = componentList(client, version);

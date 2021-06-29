@@ -31,4 +31,12 @@ public abstract class AbstractBuilder {
             return new ArrayList<>(0);
         }
     }
+
+    static Boolean isDeprecated(JsonObject metadata, String type){
+        try {
+            return metadata.getJsonObject(type).getBoolean("deprecated");
+        } catch (Exception e){
+            return false;
+        }
+    }
 }

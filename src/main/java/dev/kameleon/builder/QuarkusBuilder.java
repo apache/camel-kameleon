@@ -25,7 +25,7 @@ public class QuarkusBuilder extends AbstractBuilder {
     private static final Logger LOGGER = Logger.getLogger(QuarkusBuilder.class.getName());
 
     public static List<CamelComponent> getComponents(WebClient client, String version) {
-        LOGGER.fine("--- Quarkus components:");
+        LOGGER.info("--- Quarkus components: " + version);
         List<CamelComponent> camelComponents = new ArrayList<>(200);
         try {
             JsonArray result = new JsonArray();
@@ -36,12 +36,14 @@ public class QuarkusBuilder extends AbstractBuilder {
             for (String name : components) {
                 String component = "camel-quarkus-" + name;
                 JsonObject metadata = ClassicBuilder.componentMetadata(client, classicVersion, "components", name);
-                camelComponents.add(new CamelComponent(
-                        component,
-                        getTitle(metadata, "component"),
-                        "Component",
-                        getDescription(metadata, "component"),
-                        getLabels(metadata, "component")));
+                if (!isDeprecated(metadata, "components")) {
+                    camelComponents.add(new CamelComponent(
+                            component,
+                            getTitle(metadata, "component"),
+                            "Component",
+                            getDescription(metadata, "component"),
+                            getLabels(metadata, "component")));
+                }
             }
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, "", e);

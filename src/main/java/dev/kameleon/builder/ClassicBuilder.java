@@ -16,7 +16,7 @@ public class ClassicBuilder extends AbstractBuilder {
     private static final Logger LOGGER = Logger.getLogger(ClassicBuilder.class.getName());
 
     public static List<CamelComponent> getComponents(WebClient client, String version){
-        LOGGER.fine("--- Classic components:");
+        LOGGER.info("--- Classic components: " + version);
         List<CamelComponent> camelComponents = new ArrayList<>(200);
         try {
             List<Tuple3<String, String, String>> compTypes = List.of(
@@ -30,14 +30,15 @@ public class ClassicBuilder extends AbstractBuilder {
                 Tuple3<String, String, String> compType = compTypes.get(i);
                 List<String> components = componentList(client, compType.getItem1(), version);
                 for (String name : components) {
-                    LOGGER.fine("--- " + name);
                     JsonObject metadata = componentMetadata(client, version, compType.getItem1(), name);
-                    camelComponents.add(new CamelComponent(
-                            "camel-" + name,
-                            getTitle(metadata, compType.getItem2()),
-                            compType.getItem3(),
-                            getDescription(metadata, compType.getItem2()),
-                            getLabels(metadata, compType.getItem2())));
+                    if (!isDeprecated(metadata, compType.getItem2())) {
+                        camelComponents.add(new CamelComponent(
+                                "camel-" + name,
+                                getTitle(metadata, compType.getItem2()),
+                                compType.getItem3(),
+                                getDescription(metadata, compType.getItem2()),
+                                getLabels(metadata, compType.getItem2())));
+                    }
                 }
             }
         } catch (Exception e){
