@@ -35,9 +35,9 @@ public class QuarkusBuilder extends AbstractBuilder {
 
             for (String name : components) {
                 String component = "camel-quarkus-" + name;
-                JsonObject metadata = ClassicBuilder.componentMetadata(client, version, "Component", name);
+                JsonObject metadata = ClassicBuilder.componentMetadata(client, classicVersion, "components", name);
                 camelComponents.add(new CamelComponent(
-                        "camel-quarkus-" + name,
+                        component,
                         getTitle(metadata, "component"),
                         "Component",
                         getDescription(metadata, "component"),

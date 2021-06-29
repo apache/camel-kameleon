@@ -19,7 +19,6 @@ public class ComponentService {
 
     public JsonArray components(String type, String version) throws Exception {
         String filename = "components-" + type + "-" + version + ".json";
-        System.out.println(filename);
         try (InputStream inputStream = getClass().getResourceAsStream("/" + filename);
              BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
             String components = reader.lines().collect(Collectors.joining(System.lineSeparator()));

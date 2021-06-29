@@ -19,7 +19,7 @@ jobs:
 
       - name: Build application
         run: |
-          ./mvnw clean package \
+          ./mvnw clean compile exec:java package \
           -Dquarkus.container-image.build=true \
           -Dquarkus.container-image.push=true \
           -Dquarkus.container-image.username=${{ secrets.DOCKERHUB_USERNAME }} \
