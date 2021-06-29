@@ -29,7 +29,10 @@ const Components = Vue.component('components', {
         })
     },
     setFilter: function(){
-        this.filtered = this.components.filter(e => e.name.toLowerCase().includes(this.filter.toLowerCase()))
+        this.filtered = this.components.filter(e =>
+            e.name.toLowerCase().includes(this.filter.toLowerCase())
+            || e.labels.filter( x => x.toLowerCase().includes(this.filter.toLowerCase())).length > 0
+        )
     }
   },
   template: ComponentsTemplate
