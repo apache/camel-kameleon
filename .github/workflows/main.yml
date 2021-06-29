@@ -17,10 +17,14 @@ jobs:
         with:
           java-version: 11
 
-      - name: Build application
+      - name: Prepare component data
         run: |
-          ./mvnw clean compile exec:java package \
-          -Dquarkus.container-image.build=true \
-          -Dquarkus.container-image.push=true \
-          -Dquarkus.container-image.username=${{ secrets.DOCKERHUB_USERNAME }} \
-          -Dquarkus.container-image.password=${{ secrets.DOCKERHUB_TOKEN }}
+          ./mvnw clean compile exec:java
+
+      - name: Build application
+          run: |
+            ./mvnw package \
+            -Dquarkus.container-image.build=true \
+            -Dquarkus.container-image.push=true \
+            -Dquarkus.container-image.username=${{ secrets.DOCKERHUB_USERNAME }} \
+            -Dquarkus.container-image.password=${{ secrets.DOCKERHUB_TOKEN }}
