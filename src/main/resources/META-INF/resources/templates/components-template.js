@@ -18,9 +18,9 @@ const ComponentsTemplate = `
     <table class="pf-c-table pf-m-compact pf-m-grid-lg" role="grid" id="page-layout-table-compact-table">
       <tbody role="rowgroup">
         <tr role="row" v-for="comp in filtered" :key="comp">
-          <td class="pf-m-width-20" role="cell" data-label="Type">{{comp.type}}</td>
           <td role="cell" data-label="Component">
                 <div class="component-name">{{comp.name}}
+                    <span v-if="comp.supportLevel != 'Stable'" class="pf-c-badge pf-m-unread">{{comp.supportLevel}}</span>
                     <div class="tooltip">
                         <div class="pf-c-tooltip pf-m-bottom" role="tooltip">
                           <div class="pf-c-tooltip__arrow"></div>

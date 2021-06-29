@@ -1,8 +1,6 @@
 package dev.kameleon.builder;
 
-import dev.kameleon.config.CamelComponent;
-import io.smallrye.mutiny.tuples.Tuple2;
-import io.smallrye.mutiny.tuples.Tuple3;
+import dev.kameleon.data.CamelComponent;
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 import io.vertx.mutiny.ext.web.client.WebClient;
@@ -11,14 +9,10 @@ import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
 
 import java.io.StringReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.stream.Collectors;
 
 public class QuarkusBuilder extends AbstractBuilder {
 
@@ -42,6 +36,7 @@ public class QuarkusBuilder extends AbstractBuilder {
                             getTitle(metadata, "component"),
                             "Component",
                             getDescription(metadata, "component"),
+                            getSupportLevel(metadata, "component"),
                             getLabels(metadata, "component")));
                 }
             }

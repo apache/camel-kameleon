@@ -1,6 +1,6 @@
 package dev.kameleon.builder;
 
-import dev.kameleon.config.CamelComponent;
+import dev.kameleon.data.CamelComponent;
 import io.smallrye.mutiny.tuples.Tuple2;
 import io.vertx.core.json.JsonArray;
 import io.vertx.mutiny.ext.web.client.WebClient;
@@ -41,6 +41,7 @@ public class LegacyBuilder extends AbstractBuilder {
                             values.get().getItem1(),
                             values.get().getItem2(),
                             values.get().getItem1(),
+                            "Stable",
                             new ArrayList<>(0)));
                 }
             }

@@ -1,6 +1,7 @@
 package dev.kameleon.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import dev.kameleon.data.KameleonConfiguration;
 import io.quarkus.runtime.StartupEvent;
 
 import javax.enterprise.event.Observes;

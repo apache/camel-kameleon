@@ -1,7 +1,7 @@
 package dev.kameleon.generator;
 
-import dev.kameleon.config.CamelType;
-import dev.kameleon.config.CamelVersion;
+import dev.kameleon.data.CamelType;
+import dev.kameleon.data.CamelVersion;
 import dev.kameleon.config.ConfigurationResource;
 import io.vertx.mutiny.core.Vertx;
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
@@ -14,7 +14,6 @@ import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
 import org.apache.maven.model.io.xpp3.MavenXpp3Writer;
 import org.apache.maven.shared.invoker.*;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
-import org.eclipse.microprofile.config.ConfigProvider;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

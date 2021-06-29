@@ -1,6 +1,6 @@
 package dev.kameleon.builder;
 
-import dev.kameleon.config.CamelComponent;
+import dev.kameleon.data.CamelComponent;
 import io.smallrye.mutiny.tuples.Tuple3;
 import io.vertx.core.json.JsonObject;
 import io.vertx.mutiny.ext.web.client.WebClient;
@@ -37,6 +37,7 @@ public class ClassicBuilder extends AbstractBuilder {
                                 getTitle(metadata, compType.getItem2()),
                                 compType.getItem3(),
                                 getDescription(metadata, compType.getItem2()),
+                                getSupportLevel(metadata, compType.getItem2()),
                                 getLabels(metadata, compType.getItem2())));
                     }
                 }

@@ -16,6 +16,14 @@ public abstract class AbstractBuilder {
         }
     }
 
+    static String getSupportLevel(JsonObject metadata, String type){
+        try {
+            return metadata.getJsonObject(type).getString("supportLevel");
+        } catch (Exception e){
+            return "Stable";
+        }
+    }
+
     static String getTitle(JsonObject metadata, String type){
         try {
             return metadata.getJsonObject(type).getString("title");

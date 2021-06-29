@@ -1,10 +1,10 @@
 package dev.kameleon.builder;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.kameleon.config.CamelComponent;
-import dev.kameleon.config.CamelType;
-import dev.kameleon.config.CamelVersion;
-import dev.kameleon.config.KameleonConfiguration;
+import dev.kameleon.data.CamelComponent;
+import dev.kameleon.data.CamelType;
+import dev.kameleon.data.CamelVersion;
+import dev.kameleon.data.KameleonConfiguration;
 import io.vertx.core.json.JsonArray;
 import io.vertx.ext.web.client.WebClientOptions;
 import io.vertx.mutiny.core.Vertx;
@@ -15,7 +15,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
