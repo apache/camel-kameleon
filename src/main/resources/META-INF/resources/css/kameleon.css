@@ -163,31 +163,48 @@ h1 {
 }
 
 /* Tooltip */
-
-.component-name .tooltip .pf-c-tooltip__arrow {
-    background-color: var(--grey--Color);
-}
-.component-name .tooltip .pf-c-tooltip__content {
-    background-color: var(--grey--Color);
-    color: var(--pf-c-content--Color);
-}
-
 .component-name {
   position: relative;
 }
 
 .component-name .tooltip {
-  visibility: visible;
-  position: absolute;
-  z-index: 1;
+  visibility: hidden;
+  display: block;
+  min-width: 240px;
+  text-align: center;
+  padding: 5px 0;
   opacity: 0;
   transition: opacity 0.3s;
-  top: -30px;
-  padding-left: 20px;
-  width: 600px;
+  position: absolute;
+  z-index: 1;
 }
 
 .component-name:hover .tooltip {
   visibility: visible;
   opacity: 1;
+}
+
+.component-name .tooltip:hover {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.component-name .tooltip .pf-c-tooltip__arrow {
+    background-color: var(--grey--Color);
+}
+
+.component-name .tooltip .pf-c-tooltip.pf-m-bottom .pf-c-tooltip__arrow {
+    left: 20px;
+}
+.component-name .tooltip .pf-c-tooltip__content {
+    background-color: var(--grey--Color);
+    color: #151515;
+    font-weight: 100;
+}
+
+.badge .pf-l-flex__item {
+    margin-right: 1px;
+}
+.badge .pf-c-badge {
+    font-weight: 100;
 }

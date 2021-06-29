@@ -18,21 +18,25 @@ const ComponentsTemplate = `
     <table class="pf-c-table pf-m-compact pf-m-grid-lg" role="grid" id="page-layout-table-compact-table">
       <tbody role="rowgroup">
         <tr role="row" v-for="comp in filtered" :key="comp">
-          <td role="cell" data-label="Type">{{comp.type}}</td>
+          <td class="pf-m-width-20" role="cell" data-label="Type">{{comp.type}}</td>
           <td role="cell" data-label="Component">
-              <div>
-                  <div class="component-name">{{comp.name}}
-                    <span class="tooltip">
-                        <div class="pf-c-tooltip pf-m-right" role="tooltip">
+                <div class="component-name">{{comp.name}}
+                    <div class="tooltip">
+                        <div class="pf-c-tooltip pf-m-bottom" role="tooltip">
                           <div class="pf-c-tooltip__arrow"></div>
-                          <div class="pf-c-tooltip__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id feugiat augue, nec fringilla turpis.</div>
+                          <div class="pf-c-tooltip__content">{{comp.description}}</div>
                         </div>
-                    </span>
-                  </div>
+                    </div>
                 </div>
-            </div>
           </td>
-          <td class="pf-c-table__check" role="cell">
+          <td class="pf-m-width-30" role="cell" data-label="Labels">
+                <div class="pf-c-content pf-l-flex badge">
+                    <div v-for="label in comp.labels" :key="label" class="pf-l-flex__item">
+                        <span class="pf-c-badge pf-m-read">{{label}}</span>
+                    </div>
+                </div>
+          </td>
+          <td class="pf-m-width-10 pf-c-table__check" role="cell" data-label="Action">
             <button class="pf-c-button pf-m-link pf-m-small" type="button" v-on:click="selectComponent(comp)">
               <span class="pf-c-button__icon pf-m-end">
                 <i class="fas fa-plus" aria-hidden="true"></i>
