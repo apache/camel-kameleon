@@ -10,12 +10,13 @@ public class CamelVersion {
     private String runtimeVersion; // ex. Quarkus version
     private String archetypeGroupId;
     private String archetypeArtifactId;
+    private List<CamelComponent> components;
 
     public CamelVersion() {
     }
 
     public CamelVersion(String name, String suffix, List<String> javaVersions, String defaultJava, String runtimeVersion,
-                        String archetypeGroupId, String archetypeArtifactId) {
+                        String archetypeGroupId, String archetypeArtifactId, List<CamelComponent> components) {
         this.name = name;
         this.suffix = suffix;
         this.javaVersions = javaVersions;
@@ -23,6 +24,7 @@ public class CamelVersion {
         this.runtimeVersion = runtimeVersion;
         this.archetypeGroupId = archetypeGroupId;
         this.archetypeArtifactId = archetypeArtifactId;
+        this.components = components;
     }
 
     public String getName() {
@@ -79,5 +81,13 @@ public class CamelVersion {
 
     public void setArchetypeArtifactId(String archetypeArtifactId) {
         this.archetypeArtifactId = archetypeArtifactId;
+    }
+
+    public List<CamelComponent> getComponents() {
+        return components;
+    }
+
+    public void setComponents(List<CamelComponent> components) {
+        this.components = components;
     }
 }

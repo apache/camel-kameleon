@@ -14,22 +14,14 @@ import javax.ws.rs.core.MediaType;
 public class ComponentResource {
 
     @Inject
-    QuarkusService quarkusService;
-
-    @Inject
-    ClassicService classicService;
-
-    @Inject
-    LegacyService legacyService;
+    ComponentService componentService;
 
     @GET
     @Path("/{type}/{version}")
     @Produces(MediaType.APPLICATION_JSON)
     @CacheResult(cacheName = "components")
     public JsonArray components(@PathParam("type") String type, @PathParam("version") String version) throws Exception {
-        return "quarkus".equals(type)
-                ? quarkusService.components(version)
-                : version.startsWith("2") ? legacyService.components(version) : classicService.components(version);
+        return componentService.components(type, version);
     }
 
 }

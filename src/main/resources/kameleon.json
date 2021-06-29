@@ -4,7 +4,7 @@
       "name": "standalone",
       "versions": [
         {
-          "name": "3.9.0",
+          "name": "3.11.0",
           "suffix": "",
           "javaVersions": ["14", "11", "1.8"],
           "defaultJava": "11",
@@ -22,7 +22,7 @@
           "archetypeArtifactId": "camel-archetype-main"
         },
         {
-          "name": "2.25.3",
+          "name": "2.25.4",
           "suffix": "Legacy",
           "javaVersions": ["1.8"],
           "defaultJava": "1.8",
@@ -36,7 +36,7 @@
       "name": "spring",
       "versions": [
         {
-          "name": "3.9.0",
+          "name": "3.11.0",
           "suffix": "",
           "javaVersions": ["14", "11", "1.8"],
           "defaultJava": "11",
@@ -54,7 +54,7 @@
           "archetypeArtifactId": "camel-archetype-spring-boot"
         },
         {
-          "name": "2.25.3",
+          "name": "2.25.4",
           "suffix": "Legacy",
           "javaVersions": ["1.8"],
           "defaultJava": "1.8",
@@ -68,7 +68,7 @@
       "name": "cdi",
       "versions": [
         {
-          "name": "3.9.0",
+          "name": "3.11.0",
           "suffix": "",
           "javaVersions": ["14", "11", "1.8"],
           "defaultJava": "11",
@@ -86,7 +86,7 @@
           "archetypeArtifactId": "camel-archetype-cdi"
         },
         {
-          "name": "2.25.3",
+          "name": "2.25.4",
           "suffix": "Legacy",
           "javaVersions": ["1.8"],
           "defaultJava": "1.8",
