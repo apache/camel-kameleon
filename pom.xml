@@ -18,6 +18,8 @@
         <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
         <quarkus.platform.version>1.12.2.Final</quarkus.platform.version>
         <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
+        <version.camel-quarkus>1.8.1</version.camel-quarkus>
+        <version.camel-classic>3.11.0</version.camel-classic>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -58,6 +60,21 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-arc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel.quarkus</groupId>
+            <artifactId>camel-quarkus-catalog</artifactId>
+            <version>${version.camel-quarkus}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-catalog</artifactId>
+            <version>${version.camel-classic}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-artifact</artifactId>
+            <version>3.6.3</version>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -116,7 +133,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
-                    <mainClass>dev.kameleon.builder.MetadataBuilder</mainClass>
+                    <mainClass>dev.kameleon.legacy.MetadataBuilder</mainClass>
                 </configuration>
             </plugin>
             <plugin>

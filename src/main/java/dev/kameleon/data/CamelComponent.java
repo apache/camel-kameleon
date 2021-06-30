@@ -5,21 +5,25 @@ import java.util.List;
 public class CamelComponent {
     private String component;
     private String name;
-    private String type;
     private String description;
     private String supportLevel;
+    private String firstVersion;
+    private String artifactId;
+    private Boolean deprecated;
     private List<String> labels;
 
     public CamelComponent() {
     }
 
-    public CamelComponent(String component, String name, String type, String description, String supportLevel, List<String> labels) {
+    public CamelComponent(String component, String name, String description, String supportLevel, String firstVersion, String artifactId, Boolean deprecated, List<String> labels) {
         this.component = component;
         this.name = name;
-        this.type = type;
         this.description = description;
         this.labels = labels;
         this.supportLevel = supportLevel;
+        this.firstVersion = firstVersion;
+        this.artifactId = artifactId;
+        this.deprecated = deprecated;
     }
 
     public String getComponent() {
@@ -28,14 +32,6 @@ public class CamelComponent {
 
     public void setComponent(String component) {
         this.component = component;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public String getName() {
@@ -70,13 +66,27 @@ public class CamelComponent {
         this.supportLevel = supportLevel;
     }
 
-    @Override
-    public String toString() {
-        return "CamelComponent{" +
-                "name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                ", description='" + description + '\'' +
-                ", labels=" + labels +
-                '}';
+    public Boolean getDeprecated() {
+        return deprecated;
+    }
+
+    public void setDeprecated(Boolean deprecated) {
+        this.deprecated = deprecated;
+    }
+
+    public String getFirstVersion() {
+        return firstVersion;
+    }
+
+    public void setFirstVersion(String firstVersion) {
+        this.firstVersion = firstVersion;
+    }
+
+    public String getArtifactId() {
+        return artifactId;
+    }
+
+    public void setArtifactId(String artifactId) {
+        this.artifactId = artifactId;
     }
 }
