@@ -31,13 +31,16 @@ const ComponentsTemplate = `
                     <span v-if="comp.supportLevel != 'Stable'" class="pf-c-badge pf-m-unread">{{comp.supportLevel}}</span>
                 </div>
               </div>
-              <div class="pf-c-card__body">{{comp.description}}</div>
-              <div class="pf-c-card__actions">
-                <button class="pf-c-button pf-m-link pf-m-small" type="button" v-on:click="selectComponent(comp)">
-                  <span class="pf-c-button__icon pf-m-end">
-                    <i class="fas fa-plus" aria-hidden="true"></i>
-                  </span>
-                </button>
+              <div class="pf-c-card__body">
+                <span class="description">{{comp.description}}</span>
+              </div>
+              <div class="pf-c-card__footer pf-l-flex">
+                    <div class="pf-l-split__item pf-m-fill"></div>
+                    <button class="pf-c-button pf-m-link pf-m-small no-padding" type="button" v-on:click="selectComponent(comp)">
+                        <span class="pf-c-button__icon pf-m-end">
+                            <i class="fas fa-plus" aria-hidden="true"></i>
+                        </span>
+                    </button>
               </div>
             </div>
         </div>

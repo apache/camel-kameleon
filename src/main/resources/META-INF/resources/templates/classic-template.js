@@ -38,7 +38,7 @@ const ClassicTemplate = `
             </div>
         </div>
     </section>
-    <section class="pf-c-page__main-section">
+    <section class="pf-c-page__main-section no-padding-top">
         <project></project>
     </section>
     <section class="pf-c-page__main-section no-padding-top">

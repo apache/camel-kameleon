@@ -5,7 +5,7 @@ const MainTemplate = `
         <div class="pf-c-page__header-brand">
             <a class="logo" href="../.."></a>
             <a class="pf-c-page__header-brand-link">
-                <h1 class="header">KAMELEON 0.0.9</h1>
+                <h1 class="header">KAMELEON 0.1.0</h1>
             </a>
         </div>
         <div class="pf-c-page__header-tools">

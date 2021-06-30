@@ -1,5 +1,5 @@
 const ProjectTemplate = `
-<div class="pf-c-card">
+<div class="pf-c-card project">
    <div class="pf-c-card__title">Application</div>
    <div class="pf-c-card__body">
         <form novalidate class="pf-c-form pf-m-horizontal">

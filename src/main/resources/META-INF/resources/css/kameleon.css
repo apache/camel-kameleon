@@ -68,11 +68,6 @@ h1 {
     box-shadow: 1px 0px var(--grey--Color);
 }
 
-.pf-c-card__title {
-     background: var(--grey--Color);
-     margin-bottom: 1em;
- }
-
 .pf-c-button {
     --pf-c-button--BorderRadius: 3rem;
 }
@@ -158,6 +153,20 @@ h1 {
     background-color: white;
 }
 
+/* project */
+
+.project .pf-c-card__title {
+     background: var(--grey--Color);
+     margin-bottom: 1em;
+ }
+
+/* components */
+
+.components .pf-c-card__title {
+     background: var(--grey--Color);
+     margin-bottom: 1em;
+ }
+
 .components-grid {
  padding: 1em;
 }
@@ -166,18 +175,51 @@ h1 {
     background: transparent;
 }
 
-.component-card  .pf-c-card__body {
+.component-card  .pf-c-card__title {
+    background: transparent;
     padding-bottom: 0;
+    margin-bottom: 0.5 em;
 }
 
-/* Tooltip */
-.component-name {
-  position: relative;
+.component-card  .pf-c-card__body {
+    padding-bottom: 0.5em;
+    padding-top: 0em;
 }
 
-.badge .pf-l-flex__item {
+.component-card  .pf-c-card__body .description {
+    font-weight: 100;
+}
+
+.component-card  .pf-c-card__footer .pf-c-button {
+    padding: 0;
+}
+
+.component-card  .pf-c-card__footer .artifact-id {
+    padding: 0;
+    font-family: monospace;
+    font-weight: 100;
+}
+
+.component-card .badge .pf-l-flex__item {
     margin-right: 1px;
 }
-.badge .pf-c-badge {
+.component-card .badge .pf-c-badge {
     font-weight: 100;
+}
+
+/* selected components */
+.selected .pf-c-card__title {
+     background: var(--grey--Color);
+ }
+
+.selected .component {
+    display: grid;
+}
+
+.selected .component .artifact-id {
+    font-family: monospace;
+    font-weight: 100;
+}
+.selected .component {
+    font-weight: 700;
 }
