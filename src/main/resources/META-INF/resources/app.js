@@ -17,6 +17,22 @@ const router = new VueRouter({
 // Application
 var client = new Vue({
   el: '#app',
+  data: function () {
+      return {
+          version: ""
+      }
+  },
+  mounted: async function () {
+          this.getVersion();
+      },
+  methods: {
+      getVersion: function (event) {
+          axios.get('/configuration/version')
+              .then(response => {
+                  this.version = response.data;
+              })
+      }
+  },
   router,
   template: MainTemplate,
 })
