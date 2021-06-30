@@ -1,6 +1,6 @@
 const ComponentsTemplate = `
 <div class="pf-c-card components">
-   <div v-model="components" class="pf-c-card__title">Camel components ({{components.length}}):</div>
+   <div v-model="components" class="pf-c-card__title">Camel components ({{filtered.length}}):</div>
     <div class="pf-c-toolbar no-padding" id="page-layout-table-compact-toolbar">
       <div class="pf-c-toolbar__content">
         <div class="pf-c-toolbar__content-section pf-m-nowrap">
