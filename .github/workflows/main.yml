@@ -17,9 +17,6 @@ jobs:
         with:
           java-version: 11
 
-      - name: Prepare component data
-        run: ./mvnw clean compile exec:java
-
       - name: Build application
         run: |
           ./mvnw package \
