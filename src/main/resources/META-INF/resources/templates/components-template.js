@@ -17,7 +17,10 @@ const ComponentsTemplate = `
               <div class="pf-c-card__header">
                     <div class="pf-c-content pf-l-flex badge">
                         <div v-if="comp.supportLevel != 'Stable'" class="pf-l-flex__item">
-                            <span class="pf-c-badge pf-m-unread">{{comp.supportLevel}}</span>
+                            <span class="pf-c-badge pf-m-unread preview">preview</span>
+                        </div>
+                        <div v-if="comp.nativeSupported" class="pf-l-flex__item">
+                            <span class="pf-c-badge pf-m-unread native">native</span>
                         </div>
                         <div v-for="label in comp.labels" :key="label" class="pf-l-flex__item">
                             <span class="pf-c-badge pf-m-read">{{label}}</span>

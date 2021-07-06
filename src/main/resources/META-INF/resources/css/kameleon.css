@@ -229,8 +229,13 @@ h1 {
 .component-card .badge .pf-l-flex__item {
     margin-right: 1px;
 }
+
 .component-card .badge .pf-c-badge {
     font-weight: 100;
+}
+
+.component-card .badge .preview {
+    background-color: #4d4fb7;
 }
 
 /* selected components */
