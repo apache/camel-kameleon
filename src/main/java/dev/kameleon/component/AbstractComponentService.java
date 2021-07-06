@@ -10,6 +10,7 @@ import java.util.List;
 public abstract class AbstractComponentService {
 
     protected CamelComponent getCamelComponent(String json, String type) {
+        System.out.println(json);
         JsonObject metadata = new JsonObject(json);
         return new CamelComponent(
                 getArtifactId(metadata, type),
@@ -17,8 +18,9 @@ public abstract class AbstractComponentService {
                 getDescription(metadata, type),
                 getSupportLevel(metadata, type),
                 getFirstVersion(metadata, type),
-                getArtifactId(metadata,type),
-                isDeprecated(metadata,type),
+                getArtifactId(metadata, type),
+                isDeprecated(metadata, type),
+                nativeSupported(metadata, type),
                 getLabels(metadata, type));
     }
 
@@ -73,6 +75,14 @@ public abstract class AbstractComponentService {
     protected Boolean isDeprecated(JsonObject metadata, String type) {
         try {
             return metadata.getJsonObject(type).getBoolean("deprecated");
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    protected Boolean nativeSupported(JsonObject metadata, String type) {
+        try {
+            return metadata.getJsonObject(type).getBoolean("nativeSupported");
         } catch (Exception e) {
             return false;
         }

@@ -10,12 +10,14 @@ public class CamelComponent {
     private String firstVersion;
     private String artifactId;
     private Boolean deprecated;
+    private Boolean nativeSupported;
     private List<String> labels;
 
     public CamelComponent() {
     }
 
-    public CamelComponent(String component, String name, String description, String supportLevel, String firstVersion, String artifactId, Boolean deprecated, List<String> labels) {
+    public CamelComponent(String component, String name, String description, String supportLevel, String firstVersion,
+                          String artifactId, Boolean deprecated, Boolean nativeSupported, List<String> labels) {
         this.component = component;
         this.name = name;
         this.description = description;
@@ -24,6 +26,7 @@ public class CamelComponent {
         this.firstVersion = firstVersion;
         this.artifactId = artifactId;
         this.deprecated = deprecated;
+        this.nativeSupported = nativeSupported;
     }
 
     public String getComponent() {
@@ -88,5 +91,13 @@ public class CamelComponent {
 
     public void setArtifactId(String artifactId) {
         this.artifactId = artifactId;
+    }
+
+    public Boolean getNativeSupported() {
+        return nativeSupported;
+    }
+
+    public void setNativeSupported(Boolean nativeSupported) {
+        this.nativeSupported = nativeSupported;
     }
 }
