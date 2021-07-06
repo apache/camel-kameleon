@@ -12,13 +12,26 @@ const Components = Vue.component('components', {
   },
   created: function () {
     getEventHub().$on('versionChanged', this.getComponents);
+    getEventHub().$on('unselect', this.unselectComponent);
+    getEventHub().$on('select', this.selectComponent);
   },
   beforeDestroy: function () {
     getEventHub().$off('versionChanged', this.getComponents);
+    getEventHub().$off('select', this.selectComponent);
+    getEventHub().$off('unselect', this.unselectComponent);
   },
   methods: {
-    selectComponent: function (comp){
+    addComponent: function (comp){
         getEventHub().$emit('select', comp);
+    },
+    selectComponent: function (comp){
+        console.log(this.components.find(e => e.component === comp.component));
+        this.components.find(e => e.component === comp.component).selected = true;
+        comp.selected = true;
+    },
+    unselectComponent: function (comp){
+        var index = this.selected.indexOf(comp);
+        this.selected.splice(index, 1);
     },
     getComponents: function (event){
         this.components =[];

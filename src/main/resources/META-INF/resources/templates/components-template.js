@@ -1,18 +1,14 @@
 const ComponentsTemplate = `
-<div class="pf-c-card components">
-   <div v-model="components" class="pf-c-card__title">Camel components ({{filtered.length}}):</div>
-    <div class="pf-c-toolbar no-padding" id="page-layout-table-compact-toolbar">
+<div class="components">
+   <div v-model="components" class="title">Camel components ({{filtered.length}}):</div>
+    <div class="pf-c-toolbar toolbar" >
       <div class="pf-c-toolbar__content">
         <div class="pf-c-toolbar__content-section pf-m-nowrap">
-          <div class="pf-c-toolbar__group pf-m-toggle-group pf-m-show-on-lg">
-            <div class="pf-c-toolbar__item pf-m-search-filter ">
-              <div class="pf-c-input-group" aria-label="search filter" role="group">
-                <input v-model="filter" @input="setFilter" @change="setFilter" class="pf-c-form-control" type="search" id="page-layout-table-compact-toolbar--search-filter-input" name="page-layout-table-compact-toolbar-search-filter-input" aria-label="input with dropdown and button" aria-describedby="page-layout-table-compact-toolbar--button" />
-              </div>
+            <div class="pf-c-toolbar__item pf-m-search-filter">
+                <input v-model="filter" @input="setFilter" @change="setFilter" class="pf-c-form-control" type="search"
+                placeholder="Search Camel components, dataformats, languages, etc"/>
             </div>
-          </div>
         </div>
-        <div class="pf-c-toolbar__expandable-content pf-m-hidden" id="page-layout-table-compact-toolbar-expandable-content" hidden></div>
       </div>
     </div>
     <section class="pf-c-page__main-section components-grid pf-m-fill">
@@ -36,7 +32,7 @@ const ComponentsTemplate = `
               </div>
               <div class="pf-c-card__footer pf-l-flex">
                     <div class="pf-l-split__item pf-m-fill"></div>
-                    <button class="pf-c-button pf-m-link pf-m-small no-padding" type="button" v-on:click="selectComponent(comp)">
+                    <button v-show="!comp.selected" class="pf-c-button pf-m-link pf-m-small no-padding" type="button" v-on:click="addComponent(comp)">
                         <span class="pf-c-button__icon pf-m-end">
                             <i class="fas fa-plus" aria-hidden="true"></i>
                         </span>

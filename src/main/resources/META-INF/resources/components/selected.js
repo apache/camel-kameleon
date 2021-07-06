@@ -26,6 +26,7 @@ const Selected = Vue.component('selected', {
           this.selected =[]
         },
       removeComponent: function (comp){
+        getEventHub().$emit('unselect', comp);
         var index = this.selected.indexOf(comp);
         this.selected.splice(index, 1);
       }

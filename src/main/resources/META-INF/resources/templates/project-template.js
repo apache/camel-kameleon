@@ -1,7 +1,7 @@
 const ProjectTemplate = `
-<div class="pf-c-card project">
-   <div class="pf-c-card__title">Application</div>
-   <div class="pf-c-card__body">
+<div class="project">
+   <div class="title">Maven Project</div>
+   <div class="form">
         <form novalidate class="pf-c-form pf-m-horizontal">
             <div class="pf-c-form__group">
             <div class="pf-c-form__group-label">
