@@ -32,9 +32,10 @@ const ComponentsTemplate = `
               </div>
               <div class="pf-c-card__footer pf-l-flex">
                     <div class="pf-l-split__item pf-m-fill"></div>
-                    <button v-show="!comp.selected" class="pf-c-button pf-m-link pf-m-small no-padding" type="button" v-on:click="addComponent(comp)">
+                    <button class="pf-c-button pf-m-link pf-m-small no-padding" type="button" v-on:click="addComponent(comp)">
                         <span class="pf-c-button__icon pf-m-end">
-                            <i class="fas fa-plus" aria-hidden="true"></i>
+                            <i v-show="!comp.selected" class="fas fa-plus" aria-hidden="true"></i>
+                            <i v-show="comp.selected" class="fas fa-check" aria-hidden="true"></i>
                         </span>
                     </button>
               </div>
