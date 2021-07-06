@@ -13,8 +13,7 @@ const Classic = Vue.component('classic', {
             current: {},
             camelVersion: {},
             javaVersion: '',
-            showButton: true,
-            picked: ''
+            showButton: true
         }
     },
     components: {

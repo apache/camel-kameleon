@@ -5,6 +5,7 @@ import getEventHub from './event-hub.js'
 const Components = Vue.component('components', {
   data: function () {
     return {
+        title: '',
         components: [],
         filtered: [],
         filter: ''
@@ -40,6 +41,7 @@ const Components = Vue.component('components', {
     },
     getComponents: function (event){
         this.components =[];
+        this.title = event.type === 'quarkus' ? 'Camel Quarkus extensions' : 'Camel components';
         axios('/component/' + event.type + '/' + event.camelVersion)
         .then(response => {
             this.components = response.data;

@@ -10,7 +10,6 @@ import java.util.List;
 public abstract class AbstractComponentService {
 
     protected CamelComponent getCamelComponent(String json, String type) {
-        System.out.println(json);
         JsonObject metadata = new JsonObject(json);
         return new CamelComponent(
                 getArtifactId(metadata, type),
