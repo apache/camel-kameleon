@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>one.entropy</groupId>
     <artifactId>kameleon</artifactId>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
     <properties>
         <compiler-plugin.version>3.8.1</compiler-plugin.version>
         <maven.compiler.parameters>true</maven.compiler.parameters>
@@ -217,4 +217,26 @@
             </properties>
         </profile>
     </profiles>
+    <repositories>
+        <repository>
+            <id>snapshots</id>
+            <url>http://repository.apache.org/snapshots</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots/>
+            <id>Apache Snapshot Repository</id>
+            <url>http://repository.apache.org/snapshots</url>
+        </pluginRepository>
+    </pluginRepositories>
 </project>
