@@ -1,6 +1,6 @@
 const ComponentsTemplate = `
 <div class="components">
-   <div v-model="components" class="title">Camel components ({{filtered.length}}):</div>
+   <div v-model="components" class="title">Camel components ({{filtered.length}})</div>
     <div class="pf-c-toolbar toolbar" >
       <div class="pf-c-toolbar__content">
         <div class="pf-c-toolbar__content-section pf-m-nowrap">
@@ -16,6 +16,9 @@ const ComponentsTemplate = `
             <div v-for="comp in filtered" :key="comp" class="pf-c-card pf-m-hoverable pf-m-compact component-card">
               <div class="pf-c-card__header">
                     <div class="pf-c-content pf-l-flex badge">
+                        <div v-if="comp.supportLevel != 'Stable'" class="pf-l-flex__item">
+                            <span class="pf-c-badge pf-m-unread">{{comp.supportLevel}}</span>
+                        </div>
                         <div v-for="label in comp.labels" :key="label" class="pf-l-flex__item">
                             <span class="pf-c-badge pf-m-read">{{label}}</span>
                         </div>
@@ -24,7 +27,6 @@ const ComponentsTemplate = `
               <div class="pf-c-card__title component-title">
                 <div class="pf-c-content pf-l-flex">
                     <p id="card-1-check-label">{{comp.name}}</p>
-                    <span v-if="comp.supportLevel != 'Stable'" class="pf-c-badge pf-m-unread">{{comp.supportLevel}}</span>
                 </div>
               </div>
               <div class="pf-c-card__body">
