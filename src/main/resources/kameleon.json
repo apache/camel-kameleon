@@ -5,7 +5,7 @@
       "versions": [
         {
           "name": "3.11.0",
-          "suffix": "",
+          "suffix": "LTS",
           "javaVersions": ["14", "11", "1.8"],
           "defaultJava": "11",
           "runtimeVersion": "",
@@ -37,7 +37,7 @@
       "versions": [
         {
           "name": "3.11.0",
-          "suffix": "",
+          "suffix": "LTS",
           "javaVersions": ["14", "11", "1.8"],
           "defaultJava": "11",
           "runtimeVersion": "",
@@ -69,7 +69,7 @@
       "versions": [
         {
           "name": "3.11.0",
-          "suffix": "",
+          "suffix": "LTS",
           "javaVersions": ["14", "11", "1.8"],
           "defaultJava": "11",
           "runtimeVersion": "",
@@ -100,11 +100,11 @@
       "name": "quarkus",
       "versions": [
         {
-          "name": "1.8.1",
+          "name": "2.0.0",
           "suffix": "",
           "javaVersions": ["11"],
           "defaultJava": "11",
-          "runtimeVersion": "1.13.2.Final",
+          "runtimeVersion": "2.0.0.Final",
           "archetypeGroupId": "io.quarkus",
           "archetypeArtifactId": "quarkus-maven-plugin"
         }
