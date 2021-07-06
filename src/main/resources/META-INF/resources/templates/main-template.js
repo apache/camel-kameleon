@@ -5,7 +5,7 @@ const MainTemplate = `
         <div class="pf-c-page__header-brand">
             <a class="logo" href="../.."></a>
         </div>
-        <div class="pf-c-page__header-nav" id="navigation">
+        <div class="pf-c-page__header-nav navigation" id="navigation">
           <nav class="pf-c-nav pf-m-horizontal pf-m-light" id="page-default-nav-example-primary-nav" aria-label="Global">
               <ul class="pf-c-nav__list">
                   <li class="pf-c-nav__item">
