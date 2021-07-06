@@ -69,7 +69,7 @@ public class GeneratorService {
         MavenXpp3Reader reader = new MavenXpp3Reader();
         Model model = reader.read(new FileReader(pom));
         List<Dependency> dependencies = model.getDependencies();
-        List<Dependency> additional = Arrays.stream(components.split(",")).map(s -> {
+        List<Dependency> additional = Arrays.stream(components.split(",")).distinct().map(s -> {
             Dependency dep = new Dependency();
             dep.setArtifactId(s);
             dep.setGroupId("org.apache.camel");
