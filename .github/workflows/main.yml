@@ -17,6 +17,12 @@ jobs:
         with:
           java-version: 11
 
+      - name: Clone Kamelet Catalogue
+        run: git clone --depth 1 --branch v0.3.0 git@github.com:apache/camel-kamelets.git /tmp/kamelets
+
+      - name: Build Kamelet Catalogue
+        run: mvn install -f /tmp/kamelets
+
       - name: Test application
         run: ./mvnw compile test
 
