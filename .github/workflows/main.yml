@@ -32,11 +32,11 @@ jobs:
         run: mvn install -f camel-kamelets
 
       - name: Test application
-        run: ./mvnw compile test -f main
+        run: mvn compile test -f main
 
       - name: Build application
         run: |
-          ./mvnw package -f main -DskipTest \
+          mvn package -f main -DskipTest \
           -Dquarkus.container-image.build=true \
           -Dquarkus.container-image.push=true \
           -Dquarkus.container-image.username=${{ secrets.DOCKERHUB_USERNAME }} \
