@@ -17,9 +17,12 @@ jobs:
         with:
           java-version: 11
 
+      - name: Test application
+        run: ./mvnw compile test
+
       - name: Build application
         run: |
-          ./mvnw package \
+          ./mvnw package -DskipTest \
           -Dquarkus.container-image.build=true \
           -Dquarkus.container-image.push=true \
           -Dquarkus.container-image.username=${{ secrets.DOCKERHUB_USERNAME }} \
