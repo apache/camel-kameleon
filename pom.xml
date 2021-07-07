@@ -20,6 +20,7 @@
         <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
         <version.camel-quarkus>2.0.0</version.camel-quarkus>
         <version.camel-classic>3.11.0</version.camel-classic>
+        <version.camel-kamelet>0.3.0</version.camel-kamelet>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -70,6 +71,11 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-catalog</artifactId>
             <version>${version.camel-classic}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel.kamelets</groupId>
+            <artifactId>camel-kamelets-catalog</artifactId>
+            <version>${version.camel-kamelet}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.maven</groupId>
