@@ -6,7 +6,7 @@ const SelectedTemplate = `
         <tr role="row" v-for="comp in selected" :key="comp">
             <td role="cell" data-label="Component">
                 <div class="component">
-                    <span class="component">{{comp.name}}</span>
+                    <span class="component">{{comp.title}}</span>
                     <span class="artifact-id">{{comp.artifactId}}</span>
                 </div>
             </td>
