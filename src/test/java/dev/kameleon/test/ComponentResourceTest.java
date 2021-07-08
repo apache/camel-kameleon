@@ -38,8 +38,8 @@ public class ComponentResourceTest {
                 .then().extract().response();
 
         List<HashMap<String, String>> list = resp.getBody().jsonPath().getList("");
-        Assertions.assertTrue(list.size() >200);
-        Assertions.assertTrue(list.stream().filter(c -> c.get("name").contains("activemq")).count() > 0);
+        Assertions.assertTrue(list.size() > 100);
+        Assertions.assertTrue(list.stream().filter(c -> c.get("name").contains("amqp")).count() > 0);
         Assertions.assertTrue(list.stream().filter(c -> c.get("name").contains("kafka")).count() > 0);
     }
 
