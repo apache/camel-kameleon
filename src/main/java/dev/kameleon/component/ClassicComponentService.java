@@ -1,11 +1,10 @@
 package dev.kameleon.component;
 
-import dev.kameleon.data.CamelComponent;
+import dev.kameleon.model.CamelComponent;
 import io.vertx.core.json.JsonArray;
 import org.apache.camel.catalog.CamelCatalog;
 import org.apache.camel.catalog.DefaultCamelCatalog;
 import org.apache.camel.catalog.DefaultRuntimeProvider;
-import org.apache.camel.catalog.quarkus.QuarkusRuntimeProvider;
 import org.apache.maven.artifact.versioning.ComparableVersion;
 
 import javax.enterprise.context.ApplicationScoped;

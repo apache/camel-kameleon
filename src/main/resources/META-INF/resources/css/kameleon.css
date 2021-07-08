@@ -228,6 +228,9 @@ h1 {
 
 .component-card .badge .pf-l-flex__item {
     margin-right: 1px;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 0;
 }
 
 .component-card .badge .pf-c-badge {
@@ -236,6 +239,20 @@ h1 {
 
 .component-card .badge .preview {
     background-color: #4d4fb7;
+}
+
+.component-card .badge .preview {
+    background-color: #4d4fb7;
+}
+
+.component-card .badge-item {
+
+}
+.component-card .icon {
+    height: 1.5em;
+    width: auto;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 /* selected components */

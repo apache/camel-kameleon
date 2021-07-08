@@ -1,7 +1,7 @@
 package dev.kameleon.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.kameleon.data.KameleonConfiguration;
+import dev.kameleon.model.KameleonConfiguration;
 import io.quarkus.runtime.StartupEvent;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 

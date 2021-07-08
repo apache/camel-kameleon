@@ -1,4 +1,4 @@
-package dev.kameleon.data;
+package dev.kameleon.model;
 
 import java.util.List;
 

@@ -20,6 +20,9 @@ const MainTemplate = `
                   <li class="pf-c-nav__item">
                       <router-link to="/quarkus" v-bind:class="[$route.path === '/quarkus' ? 'pf-m-current' : '', 'pf-c-nav__link']">Quarkus</router-link>
                   </li>
+                  <li class="pf-c-nav__item">
+                      <router-link to="/kamelet" v-bind:class="[$route.path === '/kamelet' ? 'pf-m-current' : '', 'pf-c-nav__link']">Kamelet</router-link>
+                  </li>
               </ul>
           </nav>
         </div>

@@ -1,12 +1,12 @@
 const ComponentsTemplate = `
 <div class="components">
-   <div v-model="components" class="title">{{title}} ({{filtered.length}})</div>
+   <div v-model="components" class="title">{{this.$parent.current.componentListTitle}} ({{filtered.length}})</div>
     <div class="pf-c-toolbar toolbar" >
       <div class="pf-c-toolbar__content">
         <div class="pf-c-toolbar__content-section pf-m-nowrap">
             <div class="pf-c-toolbar__item pf-m-search-filter">
                 <input v-model="filter" @input="setFilter" @change="setFilter" class="pf-c-form-control" type="search"
-                placeholder="Search Camel components, dataformats, languages, etc"/>
+                placeholder="Search by name or label"/>
             </div>
         </div>
       </div>
@@ -17,25 +17,26 @@ const ComponentsTemplate = `
               <div class="pf-c-card__header">
                     <div class="pf-c-content pf-l-flex badge">
                         <div v-if="comp.supportLevel != 'Stable'" class="pf-l-flex__item">
-                            <span class="pf-c-badge pf-m-unread preview">preview</span>
+                            <span class="pf-c-badge pf-m-unread preview badge-item">preview</span>
                         </div>
                         <div v-if="comp.nativeSupported" class="pf-l-flex__item">
-                            <span class="pf-c-badge pf-m-unread native">native</span>
+                            <span class="pf-c-badge pf-m-unread native badge-item">native</span>
                         </div>
                         <div v-for="label in comp.labels" :key="label" class="pf-l-flex__item">
-                            <span class="pf-c-badge pf-m-read">{{label}}</span>
+                            <span class="pf-c-badge pf-m-read badge-item">{{label}}</span>
                         </div>
                     </div>
               </div>
               <div class="pf-c-card__title component-title">
                 <div class="pf-c-content pf-l-flex">
-                    <p id="card-1-check-label">{{comp.name}}</p>
+                    <p id="card-1-check-label">{{comp.title}}</p>
                 </div>
               </div>
               <div class="pf-c-card__body">
                 <span class="description">{{comp.description}}</span>
               </div>
               <div class="pf-c-card__footer pf-l-flex">
+                    <img v-if="comp.icon" v-bind:src='comp.icon' class="icon badge-item">
                     <div class="pf-l-split__item pf-m-fill"></div>
                     <button class="pf-c-button pf-m-link pf-m-small no-padding" type="button" v-on:click="addComponent(comp)">
                         <span class="pf-c-button__icon pf-m-end">

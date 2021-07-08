@@ -10,7 +10,8 @@ const router = new VueRouter({
     { path: '/standalone', component: Classic, props: { type: 'standalone', title: 'Standalone' } },
     { path: '/spring', component: Classic, props: { type: 'spring', title: 'Spring' } },
     { path: '/cdi', component: Classic, props: { type: 'cdi', title: 'CDI' } },
-    { path: '/quarkus', component: Classic, props: { type: 'quarkus', title: 'Quarkus'} }
+    { path: '/quarkus', component: Classic, props: { type: 'quarkus', title: 'Quarkus'} },
+    { path: '/kamelet', component: Classic, props: { type: 'kamelet', title: 'Kamelet'} }
   ]
 })
 

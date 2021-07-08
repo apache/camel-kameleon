@@ -1,6 +1,6 @@
 package dev.kameleon.component;
 
-import dev.kameleon.data.CamelComponent;
+import dev.kameleon.model.CamelComponent;
 import io.vertx.core.json.JsonArray;
 import org.apache.camel.catalog.CamelCatalog;
 import org.apache.camel.catalog.DefaultCamelCatalog;

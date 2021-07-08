@@ -1,7 +1,7 @@
 package dev.kameleon.generator;
 
-import dev.kameleon.data.CamelType;
-import dev.kameleon.data.CamelVersion;
+import dev.kameleon.model.CamelType;
+import dev.kameleon.model.CamelVersion;
 import dev.kameleon.config.ConfigurationResource;
 import io.vertx.mutiny.core.Vertx;
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;

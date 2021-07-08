@@ -1,7 +1,7 @@
 package dev.kameleon.test;
 
 import dev.kameleon.config.ConfigurationResource;
-import dev.kameleon.data.KameleonConfiguration;
+import dev.kameleon.model.KameleonConfiguration;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;

@@ -2,6 +2,8 @@
   "types": [
     {
       "name": "standalone",
+      "pageTitle": "Camel standalone",
+      "componentListTitle": "Camel components",
       "versions": [
         {
           "name": "3.11.0",
@@ -34,6 +36,8 @@
     },
     {
       "name": "spring",
+      "pageTitle": "Camel Spring Boot",
+      "componentListTitle": "Camel components",
       "versions": [
         {
           "name": "3.11.0",
@@ -66,6 +70,8 @@
     },
     {
       "name": "cdi",
+      "pageTitle": "Camel CDI",
+      "componentListTitle": "Camel components",
       "versions": [
         {
           "name": "3.11.0",
@@ -98,6 +104,8 @@
     },
     {
       "name": "quarkus",
+      "pageTitle": "Camel Quarkus",
+      "componentListTitle": "Camel Quarkus extensions",
       "versions": [
         {
           "name": "2.0.0",
@@ -107,6 +115,22 @@
           "runtimeVersion": "2.0.0.Final",
           "archetypeGroupId": "io.quarkus",
           "archetypeArtifactId": "quarkus-maven-plugin"
+        }
+      ]
+    },
+    {
+      "name": "kamelet",
+      "pageTitle": "Camel Kamelet standalone",
+      "componentListTitle": "Kamelets",
+      "versions": [
+        {
+          "name": "3.11.0",
+          "suffix": "",
+          "javaVersions": ["11"],
+          "defaultJava": "11",
+          "runtimeVersion": "",
+          "archetypeGroupId": "org.apache.camel.archetypes",
+          "archetypeArtifactId": "camel-archetype-main"
         }
       ]
     }

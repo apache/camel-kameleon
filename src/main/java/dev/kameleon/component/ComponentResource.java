@@ -18,14 +18,22 @@ public class ComponentResource {
     @Inject
     ClassicComponentService classicComponentService;
 
+    @Inject
+    KameletComponentService kameletComponentService;
+
     @GET
     @Path("/{type}/{version}")
     @Produces(MediaType.APPLICATION_JSON)
 //    @CacheResult(cacheName = "components")
     public JsonArray components(@PathParam("type") String type, @PathParam("version") String version) throws Exception {
-        return "quarkus".equals(type)
-                ? quarkusComponentService.components()
-                : classicComponentService.components(version);
+        switch (type) {
+            case "quarkus":
+                return quarkusComponentService.components();
+            case "kamelet":
+                return kameletComponentService.components();
+            default:
+                return classicComponentService.components(version);
+        }
     }
 
 }

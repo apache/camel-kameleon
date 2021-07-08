@@ -1,6 +1,6 @@
 package dev.kameleon.component;
 
-import dev.kameleon.data.CamelComponent;
+import dev.kameleon.model.CamelComponent;
 import io.vertx.core.json.JsonObject;
 
 import java.util.ArrayList;
@@ -16,14 +16,15 @@ public abstract class AbstractComponentService {
                 getTitle(metadata, type),
                 getDescription(metadata, type),
                 getSupportLevel(metadata, type),
+                getLabels(metadata, type),
                 getFirstVersion(metadata, type),
                 getArtifactId(metadata, type),
                 isDeprecated(metadata, type),
-                nativeSupported(metadata, type),
-                getLabels(metadata, type));
+                nativeSupported(metadata, type)
+                );
     }
 
-    protected String getArtifactId(JsonObject metadata, String type) {
+        protected String getArtifactId(JsonObject metadata, String type) {
         try {
             return metadata.getJsonObject(type).getString("artifactId");
         } catch (Exception e) {

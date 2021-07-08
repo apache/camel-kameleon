@@ -33,8 +33,7 @@ const Components = Vue.component('components', {
         }
     },
     unselectComponent: function (comp){
-        console.log(comp);
-        var index = this.filtered.findIndex(e => e.component == comp.component);
+        var index = this.filtered.findIndex(e => e.name == comp.name);
         console.log(index);
         comp.selected = false;
         this.filtered.splice(index, 1, comp);

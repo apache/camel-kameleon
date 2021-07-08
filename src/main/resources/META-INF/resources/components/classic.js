@@ -51,6 +51,12 @@ const Classic = Vue.component('classic', {
             this.javaVersion = this.camelVersion.javaVersions.includes(this.javaVersion) ? this.javaVersion : this.camelVersion.defaultJava;
             getEventHub().$emit('versionChanged', { type: this.type, camelVersion: this.camelVersion.name });
         },
+        isButtonDisabled: function (event) {
+            return this.current.name === "kamelet";
+        },
+        getButtonCaption: function (event) {
+            return this.current.name === "kamelet" ? "Coming soon.." : "Generate";
+        },
         generate: function (event) {
             this.showButton = false;
             const project = this.$children.find(child => { return child.$options.name === "project"; });

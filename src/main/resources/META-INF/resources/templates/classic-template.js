@@ -5,7 +5,7 @@ const ClassicTemplate = `
             <div class="pf-l-split__item">
                 <div class="pf-c-content pf-l-flex">
                     <div class="pf-l-flex__item">
-                        <h2 v-model="title" >Camel {{title}}</h2>
+                        <h2 v-model="title" >{{current.pageTitle}}</h2>
                     </div>
                     <div class="pf-l-flex__item">
                         <select @change="onCamelChange" v-model="camelVersion" class="pf-c-form-control" id="version" name="version" aria-label="select version" required>
@@ -28,12 +28,12 @@ const ClassicTemplate = `
             </div>
             <div class="pf-l-split__item pf-m-fill"></div>
             <div class="pf-l-split__item">
-                    <button v-show="showButton" @click="generate()" class="pf-c-button pf-m-primary" type="button">Generate</button>
-                    <span v-show="showButton === false" class="pf-c-spinner" role="progressbar" aria-valuetext="Loading...">
-                      <span class="pf-c-spinner__clipper"></span>
-                      <span class="pf-c-spinner__lead-ball"></span>
-                      <span class="pf-c-spinner__tail-ball"></span>
-                    </span>
+                <button v-show="showButton" :disabled="isButtonDisabled()" @click="generate()" class="pf-c-button pf-m-primary" type="button">{{getButtonCaption()}}</button>
+                <span v-show="showButton === false" class="pf-c-spinner" role="progressbar" aria-valuetext="Loading...">
+                  <span class="pf-c-spinner__clipper"></span>
+                  <span class="pf-c-spinner__lead-ball"></span>
+                  <span class="pf-c-spinner__tail-ball"></span>
+                </span>
             </div>
         </div>
     </section>

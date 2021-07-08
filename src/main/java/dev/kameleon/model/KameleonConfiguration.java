@@ -1,4 +1,6 @@
-package dev.kameleon.data;
+package dev.kameleon.model;
+
+import dev.kameleon.model.CamelType;
 
 import java.util.List;
 
