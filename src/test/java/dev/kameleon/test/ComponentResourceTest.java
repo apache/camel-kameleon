@@ -39,8 +39,8 @@ public class ComponentResourceTest {
 
         List<HashMap<String, String>> list = resp.getBody().jsonPath().getList("");
         Assertions.assertTrue(list.size() >200);
-        Assertions.assertTrue(list.stream().filter(c -> c.get("component").contains("activemq")).count() > 0);
-        Assertions.assertTrue(list.stream().filter(c -> c.get("component").contains("kafka")).count() > 0);
+        Assertions.assertTrue(list.stream().filter(c -> c.get("name").contains("activemq")).count() > 0);
+        Assertions.assertTrue(list.stream().filter(c -> c.get("name").contains("kafka")).count() > 0);
     }
 
 }

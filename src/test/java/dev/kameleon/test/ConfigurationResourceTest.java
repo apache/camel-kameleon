@@ -33,7 +33,7 @@ public class ConfigurationResourceTest {
                 .then()
                 .statusCode(200)
                 .contentType(ContentType.JSON)
-                .body("types.size()", is(4))
+                .body("types.size()", is(5))
                 .body("types[0].name", equalTo("standalone"))
                 .body("types[1].name", equalTo("spring"))
                 .body("types[2].name", equalTo("cdi"))
