@@ -7,8 +7,10 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
     steps:
       - name: Checkout
@@ -48,5 +50,6 @@ jobs:
           mvn package -f main -DskipTest \
           -Dquarkus.container-image.build=true \
           -Dquarkus.container-image.push=true \
-          -Dquarkus.container-image.username=${{ secrets.DOCKERHUB_USERNAME }} \
-          -Dquarkus.container-image.password=${{ secrets.DOCKERHUB_TOKEN }}
+          -Dquarkus.container-image.image=ghcr.io/${GITHUB_REPOSITORY}:latest \
+          -Dquarkus.container-image.username=${{ github.actor }} \
+          -Dquarkus.container-image.password=${{ secrets.GITHUB_TOKEN }}
