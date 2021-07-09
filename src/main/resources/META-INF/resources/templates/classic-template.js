@@ -27,13 +27,15 @@ const ClassicTemplate = `
                 </div>
             </div>
             <div class="pf-l-split__item pf-m-fill"></div>
-            <div class="pf-l-split__item">
-                <button v-show="showButton" :disabled="isButtonDisabled()" @click="generate()" class="pf-c-button pf-m-primary" type="button">{{getButtonCaption()}}</button>
-                <span v-show="showButton === false" class="pf-c-spinner" role="progressbar" aria-valuetext="Loading...">
+            <div v-show="showButton === false" class="pf-l-split__item">
+                <span class="pf-c-spinner spinner" role="progressbar" aria-valuetext="Loading...">
                   <span class="pf-c-spinner__clipper"></span>
                   <span class="pf-c-spinner__lead-ball"></span>
                   <span class="pf-c-spinner__tail-ball"></span>
                 </span>
+            </div>
+             <div v-show="showButton" class="pf-l-split__item">
+                <button  :disabled="isButtonDisabled()" @click="generate()" class="pf-c-button pf-m-primary" type="button">{{getButtonCaption()}}</button>
             </div>
         </div>
     </section>

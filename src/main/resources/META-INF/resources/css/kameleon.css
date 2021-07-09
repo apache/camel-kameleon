@@ -136,6 +136,10 @@ h1 {
     background-position-y: 10px;
 }
 
+.spinner {
+    --pf-c-spinner--diameter: 1.9em;
+}
+
 .pf-c-table  .filter {
     padding: 0.5em;
 }
