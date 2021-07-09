@@ -1,4 +1,4 @@
-package dev.kameleon.test;
+package org.apache.camel.kameleon.model;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -20,15 +20,21 @@ package dev.kameleon.test;
  */
 
 
-import io.quarkus.test.junit.QuarkusTest;
-import org.junit.jupiter.api.Test;
+import java.util.List;
 
+import org.apache.camel.kameleon.model.CamelType;
 
-@QuarkusTest
-public class GeneratorResourceTest {
+public class KameleonConfiguration {
+    private List<CamelType> types;
 
-    @Test
-    public void testGenerator() {
-        // TODO
+    public KameleonConfiguration() {
+    }
+
+    public List<CamelType> getTypes() {
+        return types;
+    }
+
+    public void setTypes(List<CamelType> types) {
+        this.types = types;
     }
 }

@@ -1,4 +1,4 @@
-package dev.kameleon.generator;
+package org.apache.camel.kameleon.generator;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one

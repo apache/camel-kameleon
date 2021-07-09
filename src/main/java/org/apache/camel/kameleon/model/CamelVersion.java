@@ -1,4 +1,4 @@
-package dev.kameleon.model;
+package org.apache.camel.kameleon.model;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one

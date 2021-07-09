@@ -1,4 +1,4 @@
-package dev.kameleon.component;
+package org.apache.camel.kameleon.component;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -20,12 +20,13 @@ package dev.kameleon.component;
  */
 
 
-import dev.kameleon.model.CamelComponent;
 import io.vertx.core.json.JsonObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import org.apache.camel.kameleon.model.CamelComponent;
 
 public abstract class AbstractComponentService {
 

@@ -1,4 +1,4 @@
-package dev.kameleon;
+package org.apache.camel.kameleon;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -20,14 +20,15 @@ package dev.kameleon;
  */
 
 
-import dev.kameleon.component.ComponentResource;
-import dev.kameleon.config.ConfigurationResource;
-import dev.kameleon.generator.GeneratorService;
 import io.quarkus.runtime.StartupEvent;
 import io.quarkus.runtime.configuration.ProfileManager;
 import io.quarkus.vertx.ConsumeEvent;
 import io.vertx.core.json.JsonArray;
 import io.vertx.mutiny.core.eventbus.EventBus;
+
+import org.apache.camel.kameleon.component.ComponentResource;
+import org.apache.camel.kameleon.config.ConfigurationResource;
+import org.apache.camel.kameleon.generator.GeneratorService;
 import org.jboss.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -77,7 +78,7 @@ public class WarmUpService {
             JsonArray componentArray = componentResource.components(type, version);
             List<String> componentList = componentArray.stream().map(o -> o.toString()).collect(Collectors.toList());
             String components = componentList.stream().limit(5).collect(Collectors.joining(","));
-            generatorService.generate(type, version, "dev.kameleon", "demo", "0.0.1", javaVersion, components);
+            generatorService.generate(type, version, "org.apache.camel.kameleon", "demo", "0.0.1", javaVersion, components);
             LOGGER.info("Data warmup done for " + type + " " + version);
         } catch (Exception e) {
             LOGGER.error(e);

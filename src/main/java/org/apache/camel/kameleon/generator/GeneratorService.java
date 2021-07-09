@@ -1,4 +1,4 @@
-package dev.kameleon.generator;
+package org.apache.camel.kameleon.generator;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -20,10 +20,11 @@ package dev.kameleon.generator;
  */
 
 
-import dev.kameleon.model.CamelType;
-import dev.kameleon.model.CamelVersion;
-import dev.kameleon.config.ConfigurationResource;
 import io.vertx.mutiny.core.Vertx;
+
+import org.apache.camel.kameleon.config.ConfigurationResource;
+import org.apache.camel.kameleon.model.CamelType;
+import org.apache.camel.kameleon.model.CamelVersion;
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
 import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;
 import org.apache.commons.compress.utils.IOUtils;

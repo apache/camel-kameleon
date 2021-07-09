@@ -1,4 +1,4 @@
-package dev.kameleon.component;
+package org.apache.camel.kameleon.component;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -20,11 +20,11 @@ package dev.kameleon.component;
  */
 
 
-import dev.kameleon.model.CamelComponent;
 import io.vertx.core.json.JsonArray;
 import org.apache.camel.catalog.CamelCatalog;
 import org.apache.camel.catalog.DefaultCamelCatalog;
 import org.apache.camel.catalog.DefaultRuntimeProvider;
+import org.apache.camel.kameleon.model.CamelComponent;
 import org.apache.maven.artifact.versioning.ComparableVersion;
 
 import javax.enterprise.context.ApplicationScoped;

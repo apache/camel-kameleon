@@ -1,4 +1,4 @@
-package dev.kameleon.config;
+package org.apache.camel.kameleon.config;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -21,8 +21,10 @@ package dev.kameleon.config;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.kameleon.model.KameleonConfiguration;
+
 import io.quarkus.runtime.StartupEvent;
+
+import org.apache.camel.kameleon.model.KameleonConfiguration;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import javax.enterprise.event.Observes;

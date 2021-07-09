@@ -1,4 +1,4 @@
-package dev.kameleon.test;
+package org.apache.camel.kameleon;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -20,8 +20,6 @@ package dev.kameleon.test;
  */
 
 
-import dev.kameleon.config.ConfigurationResource;
-import dev.kameleon.model.KameleonConfiguration;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
@@ -32,6 +30,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
+
+import org.apache.camel.kameleon.config.ConfigurationResource;
+import org.apache.camel.kameleon.model.KameleonConfiguration;
 import org.junit.jupiter.api.Assertions;
 
 @QuarkusTest

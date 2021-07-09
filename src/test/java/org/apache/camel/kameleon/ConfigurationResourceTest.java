@@ -1,4 +1,4 @@
-package dev.kameleon.test;
+package org.apache.camel.kameleon;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one

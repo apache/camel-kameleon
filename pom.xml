@@ -23,7 +23,7 @@ under the License.
          xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>one.entropy</groupId>
+    <groupId>org.apache.camel.kameleon</groupId>
     <artifactId>kameleon</artifactId>
     <version>0.2.0</version>
     <properties>
@@ -189,7 +189,7 @@ under the License.
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
-                    <mainClass>dev.kameleon.legacy.MetadataBuilder</mainClass>
+                    <mainClass>org.apache.camel.kameleon.legacy.MetadataBuilder</mainClass>
                 </configuration>
             </plugin>
             <plugin>

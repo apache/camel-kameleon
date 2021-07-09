@@ -1,4 +1,4 @@
-package dev.kameleon.component;
+package org.apache.camel.kameleon.component;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
