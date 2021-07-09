@@ -258,6 +258,16 @@ under the License.
                 <enabled>true</enabled>
             </snapshots>
         </repository>
+        <repository>
+            <id>asf-releases</id>
+            <url>https://repository.apache.org/content/repositories/releases/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
