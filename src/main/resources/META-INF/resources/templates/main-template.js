@@ -49,7 +49,7 @@ const MainTemplate = `
             <a class="pf-c-page__header-brand-link">
                 <h1 class="header">KAMELEON {{version}}</h1>
             </a>
-            <a class="github-link" href="https://github.com/mgubaidullin/kameleon">
+            <a class="github-link" href="https://github.com/apache/camel-kameleon">
                <img class="github" src="/img/fa-github.svg" alt="Github"/>
             </>
         </div>
