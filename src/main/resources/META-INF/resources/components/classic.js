@@ -80,7 +80,7 @@ const Classic = Vue.component('classic', {
             this.showButton = false;
             const project = this.$children.find(child => { return child.$options.name === "project"; });
             const sel = this.$children.find(child => { return child.$options.name === "selected"; });
-            const selected = sel.selected.map((item) => item['component']).join(",");
+            const selected = sel.selected.map((item) => item['name']).join(",");
             const request = {
                 camelType: this.type,
                 camelVersion: this.camelVersion.name,
