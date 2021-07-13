@@ -68,7 +68,7 @@ public class ConfigurationResource {
 
     private void readConfiguration() {
         if (kc == null) {
-            try (InputStream inputStream = getClass().getResourceAsStream("/kameleon.json");
+            try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream("/kameleon.json");
                  BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
                 configuration = reader.lines().collect(Collectors.joining(System.lineSeparator()));
                 ObjectMapper objectMapper = new ObjectMapper();
