@@ -15,6 +15,10 @@
 # limitations under the License.
 # ---------------------------------------------------------------------------
 
+notifications:
+  commits: commits@camel.apache.org
+  issues: commits@camel.apache.org
+  pullrequests: commits@camel.apache.org
 github:
   description: "Kameleon - project scaffolding for Apache Camel "
   homepage: https://kameleon.dev/
@@ -28,3 +32,5 @@ github:
     squash:  true
     merge:   false
     rebase:  true
+  features:
+    issues: true
