@@ -6,7 +6,7 @@
       "componentListTitle": "Camel components",
       "versions": [
         {
-          "name": "3.11.0",
+          "name": "3.11.1",
           "suffix": "LTS",
           "javaVersions": ["14", "11", "1.8"],
           "defaultJava": "11",
@@ -40,7 +40,7 @@
       "componentListTitle": "Camel components",
       "versions": [
         {
-          "name": "3.11.0",
+          "name": "3.11.1",
           "suffix": "LTS",
           "javaVersions": ["14", "11", "1.8"],
           "defaultJava": "11",
@@ -74,7 +74,7 @@
       "componentListTitle": "Camel components",
       "versions": [
         {
-          "name": "3.11.0",
+          "name": "3.11.1",
           "suffix": "LTS",
           "javaVersions": ["14", "11", "1.8"],
           "defaultJava": "11",
@@ -124,7 +124,7 @@
       "componentListTitle": "Kamelets",
       "versions": [
         {
-          "name": "3.11.0",
+          "name": "3.11.1",
           "suffix": "",
           "javaVersions": ["11"],
           "defaultJava": "11",
