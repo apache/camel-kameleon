@@ -108,11 +108,11 @@
       "componentListTitle": "Camel Quarkus extensions",
       "versions": [
         {
-          "name": "2.1.0",
+          "name": "2.2.0",
           "suffix": "",
           "javaVersions": ["11"],
           "defaultJava": "11",
-          "runtimeVersion": "2.1.0.Final",
+          "runtimeVersion": "2.2.0.Final",
           "archetypeGroupId": "io.quarkus",
           "archetypeArtifactId": "quarkus-maven-plugin"
         }
