@@ -33,14 +33,15 @@ under the License.
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <quarkus-plugin.version>2.1.1.Final</quarkus-plugin.version>
+        <quarkus-plugin.version>2.3.0.Final</quarkus-plugin.version>
         <quarkus.platform.artifact-id>quarkus-universe-bom</quarkus.platform.artifact-id>
         <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
-        <quarkus.platform.version>2.2.2.Final</quarkus.platform.version>
+        <quarkus.platform.version>2.3.0.Final</quarkus.platform.version>
         <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
-        <version.camel-quarkus>2.2.0</version.camel-quarkus>
-        <version.camel-classic>3.11.2</version.camel-classic>
+        <version.camel-quarkus>2.3.0</version.camel-quarkus>
+        <version.camel-classic>3.11.3</version.camel-classic>
         <version.camel-kamelet>0.4.0</version.camel-kamelet>
+        <version.maven-artifact>3.8.1</version.maven-artifact>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -104,7 +105,7 @@ under the License.
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-artifact</artifactId>
-            <version>3.6.3</version>
+            <version>${version.maven-artifact}</version>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -129,11 +130,6 @@ under the License.
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-model</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-artifact</artifactId>
-            <version>3.6.3</version>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
