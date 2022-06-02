@@ -67,11 +67,12 @@ public class GeneratorService {
         if (!"quarkus".equals(type)) {
             String folderName = temp.getAbsolutePath() + "/" + artifactId;
             generateClassicArchetype(temp, type, archetypeVersion, groupId, artifactId, version);
-            if (Files.exists(Paths.get(folderName)) && !components.isBlank() && !components.isEmpty()) {
+            Path path = Paths.get(folderName);
+            if (Files.exists(path) && !components.isBlank() && !components.isEmpty()) {
                 addComponents(folderName, components);
                 setJavaVersion(folderName, javaVersion);
                 packageProject(folderName, zipFileName);
-            } else if (Files.exists(Paths.get(folderName))) {
+            } else if (Files.exists(path)) {
                 setJavaVersion(folderName, javaVersion);
                 packageProject(folderName, zipFileName);
             }
@@ -109,6 +110,8 @@ public class GeneratorService {
         List<Plugin> plugins = model.getBuild().getPlugins();
         Plugin mavenCompiler = plugins.stream().filter(p -> p.getArtifactId().equals("maven-compiler-plugin")).findFirst().get();
         Xpp3Dom config = (Xpp3Dom) mavenCompiler.getConfiguration();
+        if (config.getChild("source") == null) config.addChild(new Xpp3Dom("source"));
+        if (config.getChild("target") == null) config.addChild(new Xpp3Dom("target"));
         config.getChild("source").setValue(javaVersion.equals("8") ? "1.8" : javaVersion);
         config.getChild("target").setValue(javaVersion.equals("8") ? "1.8" : javaVersion);
         mavenCompiler.setConfiguration(config);
@@ -159,7 +162,6 @@ public class GeneratorService {
         request.setBatchMode(true);
         request.setProperties(properties);
         request.setBaseDirectory(folder);
-
         execute(request);
     }
 
@@ -174,12 +176,14 @@ public class GeneratorService {
     }
 
     private void execute(InvocationRequest request) throws MavenInvocationException, IOException {
-        Path localRepo = Files.exists(Paths.get(MAVEN_REPO)) ? Paths.get(MAVEN_REPO) : Files.createDirectory(Paths.get(MAVEN_REPO));
+        Path path = Paths.get(MAVEN_REPO);
+        Path localRepo = Files.exists(path) ? path : Files.createDirectory(path);
 
         Invoker invoker = new DefaultInvoker();
         invoker.setMavenHome(new File(System.getenv("MAVEN_HOME")));
         invoker.setLocalRepositoryDirectory(localRepo.toFile());
         invoker.execute(request);
+
     }
 
     private void packageProject(String folder, String filename) {
