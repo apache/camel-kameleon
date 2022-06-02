@@ -6,7 +6,7 @@
       "componentListTitle": "Camel components",
       "versions": [
         {
-          "name": "3.11.3",
+          "name": "3.17.0",
           "suffix": "LTS",
           "javaVersions": ["11", "1.8"],
           "defaultJava": "11",
@@ -15,7 +15,7 @@
           "archetypeArtifactId": "camel-archetype-main"
         },
         {
-          "name": "3.7.6",
+          "name": "3.14.3",
           "suffix": "LTS",
           "javaVersions": ["11", "1.8"],
           "defaultJava": "11",
@@ -40,7 +40,7 @@
       "componentListTitle": "Camel components",
       "versions": [
         {
-          "name": "3.11.3",
+          "name": "3.17.0",
           "suffix": "LTS",
           "javaVersions": ["11", "1.8"],
           "defaultJava": "11",
@@ -49,7 +49,7 @@
           "archetypeArtifactId": "camel-archetype-spring-boot"
         },
         {
-          "name": "3.7.6",
+          "name": "3.14.3",
           "suffix": "LTS",
           "javaVersions": ["11", "1.8"],
           "defaultJava": "11",
@@ -74,7 +74,7 @@
       "componentListTitle": "Camel components",
       "versions": [
         {
-          "name": "3.11.3",
+          "name": "3.17.0",
           "suffix": "LTS",
           "javaVersions": ["11", "1.8"],
           "defaultJava": "11",
@@ -83,7 +83,7 @@
           "archetypeArtifactId": "camel-archetype-cdi"
         },
         {
-          "name": "3.7.6",
+          "name": "3.14.3",
           "suffix": "LTS",
           "javaVersions": ["11", "1.8"],
           "defaultJava": "11",
@@ -108,7 +108,7 @@
       "componentListTitle": "Camel Quarkus extensions",
       "versions": [
         {
-          "name": "2.3.0",
+          "name": "2.9.0",
           "suffix": "",
           "javaVersions": ["11"],
           "defaultJava": "11",
@@ -124,7 +124,7 @@
       "componentListTitle": "Kamelets",
       "versions": [
         {
-          "name": "3.11.3",
+          "name": "3.17.0",
           "suffix": "",
           "javaVersions": ["11"],
           "defaultJava": "11",
