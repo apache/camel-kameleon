@@ -7,7 +7,7 @@
       "versions": [
         {
           "name": "3.17.0",
-          "suffix": "LTS",
+          "suffix": "",
           "javaVersions": ["11", "1.8"],
           "defaultJava": "11",
           "runtimeVersion": "",
@@ -41,7 +41,7 @@
       "versions": [
         {
           "name": "3.17.0",
-          "suffix": "LTS",
+          "suffix": "",
           "javaVersions": ["11", "1.8"],
           "defaultJava": "11",
           "runtimeVersion": "",
@@ -75,7 +75,7 @@
       "versions": [
         {
           "name": "3.17.0",
-          "suffix": "LTS",
+          "suffix": "",
           "javaVersions": ["11", "1.8"],
           "defaultJava": "11",
           "runtimeVersion": "",
