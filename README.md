@@ -2,6 +2,8 @@
 
 This is a project generator for Apache Camel. It generates maven-based Java project with preconfigured Apache Camel runtime and selected components/extensions.
 
+Try [kameleon.dev](https://kameleon.dev)
+
 ## Build and run locally 
 ### Prerequisites
 - Java 11
