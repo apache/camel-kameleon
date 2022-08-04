@@ -6,16 +6,16 @@
       "componentListTitle": "Camel components",
       "versions": [
         {
-          "name": "3.17.0",
-          "suffix": "",
-          "javaVersions": ["11", "1.8"],
+          "name": "3.18.0",
+          "suffix": "LTS",
+          "javaVersions": ["11", "17"],
           "defaultJava": "11",
           "runtimeVersion": "",
           "archetypeGroupId": "org.apache.camel.archetypes",
           "archetypeArtifactId": "camel-archetype-main"
         },
         {
-          "name": "3.14.3",
+          "name": "3.14.4",
           "suffix": "LTS",
           "javaVersions": ["11", "1.8"],
           "defaultJava": "11",
@@ -40,16 +40,16 @@
       "componentListTitle": "Camel components",
       "versions": [
         {
-          "name": "3.17.0",
-          "suffix": "",
-          "javaVersions": ["11", "1.8"],
+          "name": "3.18.0",
+          "suffix": "LTS",
+          "javaVersions": ["11", "17"],
           "defaultJava": "11",
           "runtimeVersion": "",
           "archetypeGroupId": "org.apache.camel.archetypes",
           "archetypeArtifactId": "camel-archetype-spring-boot"
         },
         {
-          "name": "3.14.3",
+          "name": "3.14.4",
           "suffix": "LTS",
           "javaVersions": ["11", "1.8"],
           "defaultJava": "11",
@@ -74,16 +74,16 @@
       "componentListTitle": "Camel components",
       "versions": [
         {
-          "name": "3.17.0",
-          "suffix": "",
-          "javaVersions": ["11", "1.8"],
+          "name": "3.18.0",
+          "suffix": "LTS",
+          "javaVersions": ["11", "17"],
           "defaultJava": "11",
           "runtimeVersion": "",
           "archetypeGroupId": "org.apache.camel.archetypes",
           "archetypeArtifactId": "camel-archetype-cdi"
         },
         {
-          "name": "3.14.3",
+          "name": "3.14.4",
           "suffix": "LTS",
           "javaVersions": ["11", "1.8"],
           "defaultJava": "11",
@@ -124,9 +124,9 @@
       "componentListTitle": "Kamelets",
       "versions": [
         {
-          "name": "3.17.0",
-          "suffix": "",
-          "javaVersions": ["11"],
+          "name": "3.18.0",
+          "suffix": "LTS",
+          "javaVersions": ["11", "17"],
           "defaultJava": "11",
           "runtimeVersion": "",
           "archetypeGroupId": "org.apache.camel.archetypes",
