@@ -65,7 +65,7 @@ public class GeneratorService {
             generateClassicArchetype(temp, type, archetypeVersion, groupId, artifactId, version);
             Path path = Paths.get(folderName);
             if (Files.exists(path) && !components.isBlank() && !components.isEmpty()) {
-                addComponents(folderName, components);
+                addComponents(folderName, type, components);
                 setJavaVersion(folderName, javaVersion);
                 packageProject(folderName, zipFileName);
             } else if (Files.exists(path)) {
@@ -82,7 +82,7 @@ public class GeneratorService {
         return zipFileName;
     }
 
-    private void addComponents(String folderName, String components) throws Exception {
+    private void addComponents(String folderName, String type, String components) throws Exception {
         File pom = new File(folderName, "pom.xml");
         MavenXpp3Reader reader = new MavenXpp3Reader();
         Model model = reader.read(new FileReader(pom));
@@ -90,7 +90,8 @@ public class GeneratorService {
         List<Dependency> additional = Arrays.stream(components.split(",")).distinct().map(s -> {
             Dependency dep = new Dependency();
             dep.setArtifactId(s);
-            dep.setGroupId("org.apache.camel");
+            String gid = type.equals("spring") ? "org.apache.camel.springboot" : "org.apache.camel";
+            dep.setGroupId(gid);
             return dep;
         }).collect(Collectors.toList());
         dependencies.addAll(additional);

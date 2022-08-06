@@ -32,6 +32,9 @@ public class ComponentResource {
     QuarkusComponentService quarkusComponentService;
 
     @Inject
+    SpringBootComponentService springBootComponentService;
+
+    @Inject
     ClassicComponentService classicComponentService;
 
     @Inject
@@ -45,6 +48,8 @@ public class ComponentResource {
         switch (type) {
             case "quarkus":
                 return quarkusComponentService.components();
+            case "spring":
+                return springBootComponentService.components();
             case "kamelet":
                 return kameletComponentService.components();
             default:

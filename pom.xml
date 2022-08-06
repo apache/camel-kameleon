@@ -94,6 +94,11 @@ under the License.
             <version>${version.camel-classic}</version>
         </dependency>
         <dependency>
+            <groupId>org.apache.camel.springboot</groupId>
+            <artifactId>camel-catalog-provider-springboot</artifactId>
+            <version>${version.camel-classic}</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.camel.kamelets</groupId>
             <artifactId>camel-kamelets-catalog</artifactId>
             <version>${version.camel-kamelet}</version>
