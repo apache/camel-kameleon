@@ -7,16 +7,8 @@ Try [kameleon.dev](https://kameleon.dev)
 ## Build and run locally 
 ### Prerequisites
 - Java 11
-- Maven 3.6
+- Maven 3.8
 - Git
-
-### Install camel-kamelets-catalog
-Kameleon requires camel-kamelets-catalog that is not in maven central yet.
-```bash
-cd /tmp/camel
-git clone git@github.com:apache/camel-kamelets.git 
-mvn install   
-```
 
 ### Run in development mode
 ```bash
