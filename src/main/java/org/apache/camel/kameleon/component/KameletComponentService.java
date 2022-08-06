@@ -39,7 +39,7 @@ public class KameletComponentService {
                         List.of(e.getValue().getMetadata().getLabels().get("camel.apache.org/kamelet.type")),
                         e.getValue().getMetadata().getAnnotations().get("camel.apache.org/kamelet.group"),
                         e.getValue().getMetadata().getAnnotations().get("camel.apache.org/kamelet.icon")
-                )).collect(Collectors.toList());
+                )).sorted((o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName())).collect(Collectors.toList());
         return new JsonArray(list);
     }
 }
