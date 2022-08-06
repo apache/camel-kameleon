@@ -41,7 +41,7 @@ under the License.
         <version.camel-quarkus>2.11.0</version.camel-quarkus>
         <version.camel-classic>3.18.0</version.camel-classic>
         <version.camel-kamelet>0.8.1</version.camel-kamelet>
-        <version.maven-artifact>3.8.4</version.maven-artifact>
+        <version.maven-artifact>3.8.5</version.maven-artifact>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -120,7 +120,7 @@ under the License.
         <dependency>
             <groupId>org.apache.maven.shared</groupId>
             <artifactId>maven-invoker</artifactId>
-            <version>3.1.0</version>
+            <version>3.2.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
