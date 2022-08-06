@@ -1,24 +1,21 @@
-package org.apache.camel.kameleon.generator;
-
 /*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- * 
- *   http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
+package org.apache.camel.kameleon.generator;
 
 import io.vertx.mutiny.core.Vertx;
 
@@ -130,7 +127,7 @@ public class GeneratorService {
 
         Properties properties = new Properties();
         properties.setProperty("groupId", groupId);
-        properties.setProperty("package", generatePackageName(groupId , artifactId));
+        properties.setProperty("package", generatePackageName(groupId, artifactId));
         properties.setProperty("artifactId", artifactId);
         properties.setProperty("version", version);
         properties.setProperty("archetypeVersion", archetypeVersion);
@@ -150,12 +147,12 @@ public class GeneratorService {
             throws MavenInvocationException, IOException {
         Properties properties = new Properties();
         properties.setProperty("groupId", groupId);
-        properties.setProperty("package", generatePackageName(groupId , artifactId));
+        properties.setProperty("package", generatePackageName(groupId, artifactId));
         properties.setProperty("artifactId", artifactId);
         properties.setProperty("version", version);
 //        properties.setProperty("noExamples", "true");
         properties.setProperty("extensions",
-                (components !=null && !components.trim().isEmpty()) ? CAMEL_QUARKUS_CORE +"," + components: CAMEL_QUARKUS_CORE);
+                (components != null && !components.trim().isEmpty()) ? CAMEL_QUARKUS_CORE + "," + components : CAMEL_QUARKUS_CORE);
 
         InvocationRequest request = new DefaultInvocationRequest();
         request.setGoals(Collections.singletonList("io.quarkus:quarkus-maven-plugin:" + quarkusVersion + ":create "));
@@ -172,7 +169,7 @@ public class GeneratorService {
                 cleanArtifact.append(c);
             }
         }
-        return groupId +"."+ cleanArtifact;
+        return groupId + "." + cleanArtifact;
     }
 
     private void execute(InvocationRequest request) throws MavenInvocationException, IOException {
@@ -180,10 +177,13 @@ public class GeneratorService {
         Path localRepo = Files.exists(path) ? path : Files.createDirectory(path);
 
         Invoker invoker = new DefaultInvoker();
-        invoker.setMavenHome(new File(System.getenv("MAVEN_HOME")));
+        String mHome = System.getenv("MAVEN_HOME");
+        if (mHome == null) {
+            throw new IllegalStateException("OS Environment MAVEN_HOME is not set");
+        }
+        invoker.setMavenHome(new File(mHome));
         invoker.setLocalRepositoryDirectory(localRepo.toFile());
         invoker.execute(request);
-
     }
 
     private void packageProject(String folder, String filename) {
