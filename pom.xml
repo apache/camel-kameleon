@@ -39,7 +39,7 @@ under the License.
         <quarkus.platform.version>2.11.1.Final</quarkus.platform.version>
         <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
         <version.camel-quarkus>2.11.0</version.camel-quarkus>
-        <version.camel-classic>3.18.0</version.camel-classic>
+        <version.camel-classic>3.18.1</version.camel-classic>
         <version.camel-kamelet>0.8.1</version.camel-kamelet>
         <version.maven-artifact>3.8.5</version.maven-artifact>
     </properties>
