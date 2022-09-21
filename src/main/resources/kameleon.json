@@ -78,7 +78,7 @@
           "suffix": "",
           "javaVersions": ["11"],
           "defaultJava": "11",
-          "runtimeVersion": "2.12.0.Final",
+          "runtimeVersion": "2.12.3.Final",
           "archetypeGroupId": "io.quarkus",
           "archetypeArtifactId": "quarkus-maven-plugin"
         }
