@@ -69,40 +69,6 @@
       ]
     },
     {
-      "name": "cdi",
-      "pageTitle": "Camel CDI",
-      "componentListTitle": "Camel components",
-      "versions": [
-        {
-          "name": "3.18.2",
-          "suffix": "LTS",
-          "javaVersions": ["11", "17"],
-          "defaultJava": "11",
-          "runtimeVersion": "",
-          "archetypeGroupId": "org.apache.camel.archetypes",
-          "archetypeArtifactId": "camel-archetype-cdi"
-        },
-        {
-          "name": "3.14.4",
-          "suffix": "LTS",
-          "javaVersions": ["11", "1.8"],
-          "defaultJava": "11",
-          "runtimeVersion": "",
-          "archetypeGroupId": "org.apache.camel.archetypes",
-          "archetypeArtifactId": "camel-archetype-cdi"
-        },
-        {
-          "name": "2.25.4",
-          "suffix": "Legacy",
-          "javaVersions": ["1.8"],
-          "defaultJava": "1.8",
-          "runtimeVersion": "",
-          "archetypeGroupId": "org.apache.camel.archetypes",
-          "archetypeArtifactId": "camel-archetype-cdi"
-        }
-      ]
-    },
-    {
       "name": "quarkus",
       "pageTitle": "Camel Quarkus",
       "componentListTitle": "Camel Quarkus extensions",
