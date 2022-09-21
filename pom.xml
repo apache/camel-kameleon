@@ -33,10 +33,10 @@ under the License.
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <quarkus-plugin.version>2.12.0.Final</quarkus-plugin.version>
+        <quarkus-plugin.version>2.12.3.Final</quarkus-plugin.version>
         <quarkus.platform.artifact-id>quarkus-universe-bom</quarkus.platform.artifact-id>
         <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
-        <quarkus.platform.version>2.12.0.Final</quarkus.platform.version>
+        <quarkus.platform.version>2.12.3.Final</quarkus.platform.version>
         <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
         <version.camel-quarkus>2.12.0</version.camel-quarkus>
         <version.camel-classic>3.18.2</version.camel-classic>
@@ -65,7 +65,7 @@ under the License.
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-vertx-web</artifactId>
+            <artifactId>quarkus-reactive-routes</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
