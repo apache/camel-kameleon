@@ -33,14 +33,14 @@ under the License.
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <quarkus-plugin.version>2.12.3.Final</quarkus-plugin.version>
+        <quarkus-plugin.version>2.13.2.Final</quarkus-plugin.version>
         <quarkus.platform.artifact-id>quarkus-universe-bom</quarkus.platform.artifact-id>
         <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
-        <quarkus.platform.version>2.12.3.Final</quarkus.platform.version>
+        <quarkus.platform.version>2.13.2.Final</quarkus.platform.version>
         <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
-        <version.camel-quarkus>2.12.0</version.camel-quarkus>
+        <version.camel-quarkus>2.13.0</version.camel-quarkus>
         <version.camel-classic>3.18.2</version.camel-classic>
-        <version.camel-kamelet>0.9.0</version.camel-kamelet>
+        <version.camel-kamelet>0.9.1</version.camel-kamelet>
         <version.maven-artifact>3.8.5</version.maven-artifact>
     </properties>
     <dependencyManagement>
