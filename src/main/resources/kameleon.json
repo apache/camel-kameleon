@@ -15,7 +15,7 @@
           "archetypeArtifactId": "camel-archetype-main"
         },
         {
-          "name": "3.14.4",
+          "name": "3.14.6",
           "suffix": "LTS",
           "javaVersions": ["11", "1.8"],
           "defaultJava": "11",
@@ -49,7 +49,7 @@
           "archetypeArtifactId": "camel-archetype-spring-boot"
         },
         {
-          "name": "3.14.4",
+          "name": "3.14.6",
           "suffix": "LTS",
           "javaVersions": ["11", "1.8"],
           "defaultJava": "11",
