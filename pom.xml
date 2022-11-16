@@ -140,6 +140,12 @@ under the License.
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-container-image-docker</artifactId>
         </dependency>
+        <!-- Code generator -->
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-openapi-rest-dsl-generator</artifactId>
+            <version>${version.camel-classic}</version>
+        </dependency>
     </dependencies>
     <build>
         <resources>

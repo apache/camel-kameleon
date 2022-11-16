@@ -42,7 +42,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @ApplicationScoped
-public class GeneratorService {
+public class ProjectGeneratorService {
 
     private static final String CAMEL_QUARKUS_CORE = "camel-quarkus-core";
 

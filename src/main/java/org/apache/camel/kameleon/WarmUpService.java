@@ -24,7 +24,7 @@ import io.vertx.mutiny.core.eventbus.EventBus;
 
 import org.apache.camel.kameleon.component.ComponentResource;
 import org.apache.camel.kameleon.config.ConfigurationResource;
-import org.apache.camel.kameleon.generator.GeneratorService;
+import org.apache.camel.kameleon.generator.ProjectGeneratorService;
 import org.jboss.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -48,7 +48,7 @@ public class WarmUpService {
     ComponentResource componentResource;
 
     @Inject
-    GeneratorService generatorService;
+    ProjectGeneratorService projectGeneratorService;
 
     void onStart(@Observes StartupEvent ev) {
         LOGGER.info("Data warmup start...");
@@ -74,7 +74,7 @@ public class WarmUpService {
             JsonArray componentArray = componentResource.components(type, version);
             List<String> componentList = componentArray.stream().map(o -> o.toString()).collect(Collectors.toList());
             String components = componentList.stream().limit(5).collect(Collectors.joining(","));
-            generatorService.generate(type, version, "org.apache.camel.kameleon", "demo", "0.0.1", javaVersion, components);
+            projectGeneratorService.generate(type, version, "org.apache.camel.kameleon", "demo", "0.0.1", javaVersion, components);
             LOGGER.info("Data warmup done for " + type + " " + version);
         } catch (Exception e) {
             LOGGER.error(e);

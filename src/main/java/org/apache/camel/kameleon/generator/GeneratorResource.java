@@ -25,7 +25,7 @@ import java.io.File;
 public class GeneratorResource {
 
     @Inject
-    GeneratorService generatorService;
+    ProjectGeneratorService projectGeneratorService;
 
     @GET
     @Produces("application/zip")
@@ -36,7 +36,7 @@ public class GeneratorResource {
                 @QueryParam("artifactId") String artifactId,
                 @QueryParam("version") String version,
                 @QueryParam("components") String components) throws Exception {
-        String fileName = generatorService.generate(camelType,camelVersion, groupId, artifactId, version, javaVersion, components);
+        String fileName = projectGeneratorService.generate(camelType,camelVersion, groupId, artifactId, version, javaVersion, components);
         File nf = new File(fileName);
         if (nf.exists()){
             return  Response.ok((Object) nf)
@@ -45,6 +45,18 @@ public class GeneratorResource {
                     .header("Filename", nf.getName()).build();
         }
         return Response.serverError().build();
+    }
+
+    @Inject
+    RestDslGeneratorService restDslGeneratorService;
+
+    @POST
+    @Consumes({"application/yaml", "application/json"})
+    @Produces("application/yaml")
+    @Path("/openapi")
+    public Response generateRestDsl(@QueryParam("filename") String filename, String openapi) throws Exception {
+        String yaml = restDslGeneratorService.generate(filename, openapi);
+        return Response.ok(yaml).build();
     }
 }
 
