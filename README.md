@@ -22,7 +22,7 @@ mvn package
 
 ### Run 
 ```bash
-export MAVEN_HOME=$YOUR_MAVEN_HOME ; java -jar target/kameleon/kameleon-0.4.0-runner.jar
+export MAVEN_HOME=$YOUR_MAVEN_HOME ; java -jar target/kameleon/kameleon-0.4.1-runner.jar
 ```
 
 
