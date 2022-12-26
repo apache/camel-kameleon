@@ -40,7 +40,7 @@ under the License.
         <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
         <version.camel-quarkus>2.15.0</version.camel-quarkus>
         <version.camel-classic>3.20.0</version.camel-classic>
-        <version.camel-kamelet>0.10.0</version.camel-kamelet>
+        <version.camel-kamelet>3.20.0</version.camel-kamelet>
         <version.maven-artifact>3.8.6</version.maven-artifact>
     </properties>
     <dependencyManagement>
