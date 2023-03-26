@@ -6,7 +6,7 @@
       "componentListTitle": "Camel components",
       "versions": [
         {
-          "name": "3.20.1",
+          "name": "3.20.2",
           "suffix": "LTS",
           "javaVersions": ["11", "17"],
           "defaultJava": "11",
@@ -15,7 +15,7 @@
           "archetypeArtifactId": "camel-archetype-main"
         },
         {
-          "name": "3.18.4",
+          "name": "3.18.5",
           "suffix": "LTS",
           "javaVersions": ["11", "17"],
           "defaultJava": "11",
@@ -24,7 +24,7 @@
           "archetypeArtifactId": "camel-archetype-main"
         },
         {
-          "name": "3.14.6",
+          "name": "3.14.7",
           "suffix": "LTS",
           "javaVersions": ["11", "1.8"],
           "defaultJava": "11",
@@ -49,7 +49,7 @@
       "componentListTitle": "Camel components",
       "versions": [
         {
-          "name": "3.20.1",
+          "name": "3.20.2",
           "suffix": "LTS",
           "javaVersions": ["11", "17"],
           "defaultJava": "11",
@@ -58,7 +58,7 @@
           "archetypeArtifactId": "camel-archetype-spring-boot"
         },
         {
-          "name": "3.18.4",
+          "name": "3.18.5",
           "suffix": "LTS",
           "javaVersions": ["11", "17"],
           "defaultJava": "11",
@@ -67,7 +67,7 @@
           "archetypeArtifactId": "camel-archetype-spring-boot"
         },
         {
-          "name": "3.14.6",
+          "name": "3.14.7",
           "suffix": "LTS",
           "javaVersions": ["11", "1.8"],
           "defaultJava": "11",
@@ -92,11 +92,11 @@
       "componentListTitle": "Camel Quarkus extensions",
       "versions": [
         {
-          "name": "2.15.1",
+          "name": "2.16.5",
           "suffix": "",
           "javaVersions": ["11", "17"],
           "defaultJava": "11",
-          "runtimeVersion": "2.15.1.Final",
+          "runtimeVersion": "2.16.5.Final",
           "archetypeGroupId": "io.quarkus",
           "archetypeArtifactId": "quarkus-maven-plugin"
         }
@@ -108,7 +108,7 @@
       "componentListTitle": "Kamelets",
       "versions": [
         {
-          "name": "3.20.1",
+          "name": "3.20.2",
           "suffix": "LTS",
           "javaVersions": ["11", "17"],
           "defaultJava": "11",
