@@ -81,7 +81,7 @@ public class WarmUpService {
         }
     }
 
-    public class WarmupRequest {
+    public static class WarmupRequest {
         public String type;
         public String version;
         public String javaVersion;
