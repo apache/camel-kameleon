@@ -6,7 +6,7 @@
       "componentListTitle": "Camel components",
       "versions": [
         {
-          "name": "3.20.2",
+          "name": "3.20.3",
           "suffix": "LTS",
           "javaVersions": ["11", "17"],
           "defaultJava": "11",
@@ -49,7 +49,7 @@
       "componentListTitle": "Camel components",
       "versions": [
         {
-          "name": "3.20.2",
+          "name": "3.20.3",
           "suffix": "LTS",
           "javaVersions": ["11", "17"],
           "defaultJava": "11",
@@ -108,7 +108,7 @@
       "componentListTitle": "Kamelets",
       "versions": [
         {
-          "name": "3.20.2",
+          "name": "3.20.3",
           "suffix": "LTS",
           "javaVersions": ["11", "17"],
           "defaultJava": "11",
