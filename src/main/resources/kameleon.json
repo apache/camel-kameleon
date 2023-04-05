@@ -15,7 +15,7 @@
           "archetypeArtifactId": "camel-archetype-main"
         },
         {
-          "name": "3.18.5",
+          "name": "3.18.6",
           "suffix": "LTS",
           "javaVersions": ["11", "17"],
           "defaultJava": "11",
@@ -58,7 +58,7 @@
           "archetypeArtifactId": "camel-archetype-spring-boot"
         },
         {
-          "name": "3.18.5",
+          "name": "3.18.6",
           "suffix": "LTS",
           "javaVersions": ["11", "17"],
           "defaultJava": "11",
@@ -92,11 +92,11 @@
       "componentListTitle": "Camel Quarkus extensions",
       "versions": [
         {
-          "name": "2.16.5",
+          "name": "2.16.6",
           "suffix": "",
           "javaVersions": ["11", "17"],
           "defaultJava": "11",
-          "runtimeVersion": "2.16.5.Final",
+          "runtimeVersion": "2.16.6.Final",
           "archetypeGroupId": "io.quarkus",
           "archetypeArtifactId": "quarkus-maven-plugin"
         }
