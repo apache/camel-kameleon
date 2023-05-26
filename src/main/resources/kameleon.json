@@ -6,7 +6,7 @@
       "componentListTitle": "Camel components",
       "versions": [
         {
-          "name": "3.20.4",
+          "name": "3.20.5",
           "suffix": "LTS",
           "javaVersions": ["11", "17"],
           "defaultJava": "11",
@@ -15,7 +15,7 @@
           "archetypeArtifactId": "camel-archetype-main"
         },
         {
-          "name": "3.18.6",
+          "name": "3.18.7",
           "suffix": "LTS",
           "javaVersions": ["11", "17"],
           "defaultJava": "11",
@@ -49,7 +49,7 @@
       "componentListTitle": "Camel components",
       "versions": [
         {
-          "name": "3.20.4",
+          "name": "3.20.5",
           "suffix": "LTS",
           "javaVersions": ["11", "17"],
           "defaultJava": "11",
@@ -58,7 +58,7 @@
           "archetypeArtifactId": "camel-archetype-spring-boot"
         },
         {
-          "name": "3.18.6",
+          "name": "3.18.7",
           "suffix": "LTS",
           "javaVersions": ["11", "17"],
           "defaultJava": "11",
@@ -108,7 +108,7 @@
       "componentListTitle": "Kamelets",
       "versions": [
         {
-          "name": "3.20.4",
+          "name": "3.20.5",
           "suffix": "LTS",
           "javaVersions": ["11", "17"],
           "defaultJava": "11",
