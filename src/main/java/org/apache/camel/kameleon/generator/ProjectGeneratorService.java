@@ -21,9 +21,6 @@ import io.vertx.mutiny.core.Vertx;
 import org.apache.camel.kameleon.config.ConfigurationResource;
 import org.apache.camel.kameleon.model.CamelType;
 import org.apache.camel.kameleon.model.CamelVersion;
-import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
-import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;
-import org.apache.commons.compress.utils.IOUtils;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Model;
 import org.apache.maven.model.Plugin;
@@ -35,11 +32,12 @@ import org.codehaus.plexus.util.xml.Xpp3Dom;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 @ApplicationScoped
 public class ProjectGeneratorService {
@@ -187,22 +185,17 @@ public class ProjectGeneratorService {
     }
 
     private void packageProject(String folder, String filename) {
-        try (ZipArchiveOutputStream archive = new ZipArchiveOutputStream(new FileOutputStream(filename))) {
-            File folderToZip = new File(folder);
-            Files.walk(folderToZip.toPath()).forEach(p -> {
-                File file = p.toFile();
-                if (!file.isDirectory()) {
-                    ZipArchiveEntry entry_1 = new ZipArchiveEntry(file, file.toString().replace(folder, ""));
-                    try (FileInputStream fis = new FileInputStream(file)) {
-                        archive.putArchiveEntry(entry_1);
-                        IOUtils.copy(fis, archive);
-                        archive.closeArchiveEntry();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+        var path = Paths.get(folder);
+        try (ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(filename))) {
+            Files.walkFileTree(path, new SimpleFileVisitor<>() {
+                @Override
+                public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+                    zos.putNextEntry(new ZipEntry(path.relativize(file).toString()));
+                    Files.copy(file, zos);
+                    zos.closeEntry();
+                    return FileVisitResult.CONTINUE;
                 }
             });
-            archive.finish();
         } catch (Exception e) {
             e.printStackTrace();
         }
