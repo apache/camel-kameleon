@@ -48,6 +48,15 @@
       "pageTitle": "Camel Spring Boot",
       "componentListTitle": "Camel components",
       "versions": [
+		{
+          "name": "4.10.0",
+          "suffix": "LTS",
+          "javaVersions": ["17","21"],
+          "defaultJava": "17",
+          "runtimeVersion": "",
+          "archetypeGroupId": "org.apache.camel.archetypes",
+          "archetypeArtifactId": "camel-archetype-spring-boot"
+        },
 	    {
           "name": "4.0.3",
           "suffix": "LTS",
