@@ -23,7 +23,7 @@ import org.apache.camel.catalog.DefaultRuntimeProvider;
 import org.apache.camel.kameleon.model.CamelComponent;
 import org.apache.maven.artifact.versioning.ComparableVersion;
 
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 import java.util.ArrayList;
 import java.util.List;
 

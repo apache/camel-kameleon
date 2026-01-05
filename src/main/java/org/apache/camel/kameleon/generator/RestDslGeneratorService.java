@@ -18,15 +18,17 @@ package org.apache.camel.kameleon.generator;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.apicurio.datamodels.Library;
-import io.apicurio.datamodels.openapi.models.OasDocument;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.parser.OpenAPIV3Parser;
+import io.swagger.v3.parser.core.models.SwaggerParseResult;
 import org.apache.camel.CamelContext;
 import org.apache.camel.generator.openapi.RestDslGenerator;
-import org.apache.camel.impl.lw.LightweightCamelContext;
+import org.apache.camel.impl.DefaultCamelContext;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.SafeConstructor;
 
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 import java.io.FileNotFoundException;
 import java.util.Map;
 
@@ -36,10 +38,11 @@ public class RestDslGeneratorService {
     public String generate(String filename, String openapi) throws Exception {
         System.out.println(filename);
         System.out.println(openapi);
-        final JsonNode node = filename.endsWith("json") ? readNodeFromJson(openapi) : readNodeFromYaml(openapi);
-        OasDocument document = (OasDocument) Library.readDocument(node);
-        try (CamelContext context = new LightweightCamelContext()) {
-            return RestDslGenerator.toYaml(document).generate(context, true);
+      SwaggerParseResult result = new OpenAPIV3Parser().readContents(openapi);
+      OpenAPI openAPI = result.getOpenAPI();
+
+        try (CamelContext context = new DefaultCamelContext()) {
+            return RestDslGenerator.toYaml(openAPI).generate(context, true);
         }
     }
 
@@ -50,7 +53,7 @@ public class RestDslGeneratorService {
 
     private JsonNode readNodeFromYaml(String openapi) throws FileNotFoundException {
         final ObjectMapper mapper = new ObjectMapper();
-        Yaml loader = new Yaml(new SafeConstructor());
+        Yaml loader = new Yaml(new SafeConstructor(new LoaderOptions()));
         Map map = loader.load(openapi);
         return mapper.convertValue(map, JsonNode.class);
     }

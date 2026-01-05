@@ -16,8 +16,8 @@
  */
 package org.apache.camel.kameleon;
 
+import io.quarkus.runtime.LaunchMode;
 import io.quarkus.runtime.StartupEvent;
-import io.quarkus.runtime.configuration.ProfileManager;
 import io.quarkus.vertx.ConsumeEvent;
 import io.vertx.core.json.JsonArray;
 import io.vertx.mutiny.core.eventbus.EventBus;
@@ -27,9 +27,9 @@ import org.apache.camel.kameleon.config.ConfigurationResource;
 import org.apache.camel.kameleon.generator.ProjectGeneratorService;
 import org.jboss.logging.Logger;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Observes;
-import javax.inject.Inject;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.event.Observes;
+import jakarta.inject.Inject;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -52,7 +52,7 @@ public class WarmUpService {
 
     void onStart(@Observes StartupEvent ev) {
         LOGGER.info("Data warmup start...");
-        if (!ProfileManager.getLaunchMode().isDevOrTest()) {
+        if (!LaunchMode.current().isDevOrTest()) {
             configurationResource.getKc().getTypes()
                     .forEach(camelType -> camelType.getVersions()
                             .forEach(camelVersion -> camelVersion.getJavaVersions()

@@ -20,7 +20,7 @@ import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import java.util.HashMap;
 import java.util.List;
@@ -34,25 +34,25 @@ import org.junit.jupiter.api.Assertions;
 @QuarkusTest
 public class ComponentResourceTest {
 
-    @Inject
-    ConfigurationResource configurationResource;
+  @Inject
+  ConfigurationResource configurationResource;
 
-    @Test
-    public void testComponents() {
-        KameleonConfiguration kc = configurationResource.getKc();
-        kc.getTypes().forEach(camelType ->
-                camelType.getVersions().forEach(
-                        camelVersion -> test(camelType.getName(), camelVersion.getName())
-                )
-        );
-    }
+  @Test
+  public void testComponents() {
+    KameleonConfiguration kc = configurationResource.getKc();
+    kc.getTypes().forEach(camelType ->
+        camelType.getVersions().forEach(
+            camelVersion -> test(camelType.getName(), camelVersion.getName())
+        )
+    );
+  }
 
-    private void test(String type, String version){
-        Response resp = given()
-                .pathParam("type", type)
-                .pathParam("version", version)
-                .when().get("/component/{type}/{version}")
-                .then().extract().response();
+  private void test(String type, String version) {
+    Response resp = given()
+        .pathParam("type", type)
+        .pathParam("version", version)
+        .when().get("/component/{type}/{version}")
+        .then().extract().response();
 
         List<HashMap<String, String>> list = resp.getBody().jsonPath().getList("");
         Assertions.assertTrue(list.size() > 100);
