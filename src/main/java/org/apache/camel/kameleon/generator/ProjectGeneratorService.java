@@ -32,8 +32,8 @@ import org.apache.maven.model.io.xpp3.MavenXpp3Writer;
 import org.apache.maven.shared.invoker.*;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;

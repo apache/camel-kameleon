@@ -23,7 +23,7 @@ import org.apache.camel.catalog.quarkus.QuarkusRuntimeProvider;
 import org.apache.camel.kameleon.model.CamelComponent;
 import org.apache.camel.springboot.catalog.SpringBootRuntimeProvider;
 
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,9 +61,11 @@ public class SpringBootComponentService extends AbstractComponentService {
 
         catalog.findOtherNames().forEach(name -> {
             String json = catalog.otherJSonSchema(name);
-            CamelComponent component = getCamelComponent(json, "other");
-            if (!component.getDeprecated()) {
+            if(json != null) {
+              CamelComponent component = getCamelComponent(json, "other");
+              if (!component.getDeprecated()) {
                 list.add(component);
+              }
             }
         });
 
